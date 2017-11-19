@@ -28,11 +28,12 @@ def recommend(user_id):
     user_ratings = predicted_ratings[user_id - 1]
     recipes_df['rating'] = user_ratings
     recipes_df = recipes_df.sort_values(by=['rating'], ascending=False)
+
     return recipes_df
 
 #####Flask
 class ReviewForm(Form):
-    recommendForUserWithID = IntegerField('user id', [validators.DataRequired()])
+    recommendForUserWithID = IntegerField('', [validators.DataRequired()])
 
 #Next, we used the route decorator (@app.route('/')) to specify the URL that #should trigger the execution of the index function.
 @app.route('/')
@@ -46,10 +47,17 @@ def results():
     form = ReviewForm(request.form)
     if request.method == 'POST' and form.validate():
         user_id = int(request.form['recommendForUserWithID'])
-        recommendation = recommend(user_id)
+        recommendation = recommend(user_id).head(5)
+
+        print(recommendation[['title']])
+
         return render_template('results.html',
-                               content=user_id,
-                               prediction = recommendation)
+                               userId=user_id,
+                               recommendations = recommendation,
+                               title = recommendation[['title']],
+                               category = recommendation[['category']],
+                               rating=recommendation[['rating']],
+                               )
     return render_template('reviewform.html', form=form)
 """
 @app.route('/thanks', methods=['POST'])

@@ -1,17 +1,29 @@
 <!doctype html>
 <html>
     <head>
-        <title>Movie Classification</title>
+        <title>Recipe Recommender Results</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h3>Recipes we will recommend:</h3>
-        <div>{{ content }}</div>
-        <h3>Prediction:</h3>
-        <div>This recipe review is <strong>{{ prediction }}</strong>
-        </div>
+        <h3>For the user:</h3> {{ userId }}
+        <h3>Recipe recommendations:</h3>
 
-        <div id='button'>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Rating</th>
+            </tr>
+            {% for key,value in recommendations.iterrows() %}
+            <tr>
+                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['title'] }}</option> </td>
+                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['category'] }}</option> </td>
+                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['rating'] }}</option> </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div id='button1'>
             <form action="/thanks" method="post">
                 <input type=submit value='Correct'
                 name='feedback_button'>
@@ -22,7 +34,7 @@
                 <input type=hidden value='{{ content }}' name='review'>
             </form>
         </div>
-        <div id='button'>
+        <div id='button2'>
             <form action="/">
                 <input type=submit value='Submit another review'>
             </form>
