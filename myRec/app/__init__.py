@@ -1,5 +1,5 @@
 # Import flask and template operators
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 # Import SQLAlchemy
 
 # Define the WSGI application object
@@ -24,6 +24,11 @@ from app.mod_auth.models import User
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.filter(User.id == int(user_id)).first()
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    # when unauthorised
+    return redirect(url_for('recommender_mod.index'))
 
 # Sample HTTP error handling
 @app.errorhandler(404)

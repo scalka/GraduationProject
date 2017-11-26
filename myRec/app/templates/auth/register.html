@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+
 {% macro render_field(field, placeholder=None) %}
 {% if field.errors %}
 <div>
@@ -13,7 +16,7 @@
 
 <div class="user-registration">
   <div class="page-header">
-    <h2>Log In</h2>
+    <h2>Register</h2>
   </div>
     <form action="{{ url_for('auth.register') }}" method="post">
     {{ form.csrf_token }}
@@ -23,5 +26,7 @@
     </dl>
     <button class="btn btn-sm btn-success" type="submit">Register</button>
   </form>
-  <em>Need an account? </em><a href="{{ url_for('auth.register') }}">Signup!!</a>
+  <em>Already have an account? </em><a href="{{ url_for('auth.login') }}">Login!!</a>
 </div>
+
+{% endblock %}

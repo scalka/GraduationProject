@@ -41,14 +41,14 @@ def recommend(user_id):
 recommender_mod = Blueprint('recommender_mod', __name__, url_prefix='/recom')
 
 @recommender_mod.route('/reviewform')
-#@login_required
+@login_required
 def index():
     # index f. renders .html
     form = ReviewForm(request.form)
     return render_template('recom/reviewform.html', form=form)
 
 @recommender_mod.route('/results', methods=['POST'])
-#@login_required
+@login_required
 def results():
     form = ReviewForm(request.form)
     if request.method == 'POST':

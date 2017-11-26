@@ -1,10 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Recipe Recommender Results</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block content %}
         <h3>For the user:</h3> {{ userId }}
         <h3>Recipe recommendations:</h3>
 
@@ -39,5 +34,4 @@
                 <input type=submit value='Submit another review'>
             </form>
         </div>
-    </body>
-</html>
+{% endblock %}

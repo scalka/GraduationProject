@@ -78,4 +78,4 @@ def logout():
     db.session.commit()
     logout_user()
     flash('Goodbye!', 'info')
-    return redirect(url_for('users.login'))
+    return redirect(url_for('auth.login'))
