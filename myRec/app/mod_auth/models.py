@@ -1,40 +1,46 @@
 # Import the database object (db) from the main application module
 # We will define this inside /app/__init__.py in the next sections.
+from sqlalchemy.ext.hybrid import hybrid_method
+
 from app import db
 
-# Define a base model for other database tables to inherit
-class Base(db.Model):
 
-    __abstract__  = True
+class User(db.Model):
+    __tablename__ = 'users'
 
-    id            = db.Column(db.Integer, primary_key=True)
-    date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime,  default=db.func.current_timestamp(),
-                                           onupdate=db.func.current_timestamp())
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email = db.Column(db.String, unique=True, nullable=False)
+    password_plaintext = db.Column(db.String, nullable=False)  # TEMPORARY - TO BE DELETED IN FAVOR OF HASHED PASSWORD
+    authenticated = db.Column(db.Boolean, default=False)
 
-# Define a User model
-class User(Base):
+    def __init__(self, email, password_plaintext):
+        self.email = email
+        self.password_plaintext = password_plaintext
+        self.authenticated = False
 
-    __tablename__ = 'auth_user'
+    @hybrid_method
+    def is_correct_password(self, plaintext_password):
+        return self.password_plaintext == plaintext_password
 
-    # User Name
-    name    = db.Column(db.String(128),  nullable=False)
+    @property
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
 
-    # Identification Data: email & password
-    email    = db.Column(db.String(128),  nullable=False,
-                                            unique=True)
-    password = db.Column(db.String(192),  nullable=False)
+    @property
+    def is_active(self):
+        """Always True, as all users are active."""
+        return True
 
-    # Authorisation Data: role & status
-    role     = db.Column(db.SmallInteger, nullable=False)
-    status   = db.Column(db.SmallInteger, nullable=False)
+    @property
+    def is_anonymous(self):
+        """Always False, as anonymous users aren't supported."""
+        return False
 
-    # New instance instantiation procedure
-    def __init__(self, name, email, password):
-
-        self.name     = name
-        self.email    = email
-        self.password = password
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        """Requires use of Python 3"""
+        return str(self.id)
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<User {0}>'.format(self.email)
