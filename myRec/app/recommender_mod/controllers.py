@@ -6,13 +6,15 @@ from flask import Blueprint, request, render_template, \
                   flash, g, session, redirect, url_for
 
 # Import the database object from the main app module
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 # Import module forms
+from app import User
 from app.recommender_mod.forms import ReviewForm
 
 # Import module models (i.e. User)
 #from app.recommender_mod.recommender import recommend
+from app.recommender_mod.recommender import recommend
 
 cur_dir = os.path.dirname(__file__)
 U = pickle.load(open(os.path.join(cur_dir,
@@ -25,16 +27,7 @@ predicted_ratings = pickle.load(open(os.path.join(cur_dir,
                                             'pkl_objects',
                                             'predicted_ratings_recipes.dat'), 'rb'))
 
-def recommend(user_id):
-    # TODO get it from db
-    recipes_df = pd.read_csv(
-        'C:\\Users\\calka\\Documents\\Y4\\Recommender\\myRec\\app\\recommender_mod\\datasets\\recipes.csv',
-        index_col='recipes_id')
-    user_ratings = predicted_ratings[user_id - 1]
-    recipes_df['rating'] = user_ratings
-    recipes_df = recipes_df.sort_values(by=['rating'], ascending=False)
 
-    return recipes_df
 
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
@@ -52,19 +45,17 @@ def index():
 def results():
     form = ReviewForm(request.form)
     if request.method == 'POST':
-        user_id = int(request.form['recommendForUserWithID'])
-        recommendation = recommend(user_id).head(5)
-
-        print(recommendation[['title']])
-
+        user_id = current_user.get_id()
+        recommendation = recommend(int(user_id)).head(5)
+        print(recommendation)
         return render_template('recom/results.html',
                                userId=user_id,
-                               recommendations = recommendation,
-                               title = recommendation[['title']],
-                               category = recommendation[['category']],
+                               recommendations=recommendation,
+                               title=recommendation[['title']],
+                               category=recommendation[['category']],
                                rating=recommendation[['rating']],
                                )
-    return render_template('recom/reviewform.html', form=form)
+
 
 
 """

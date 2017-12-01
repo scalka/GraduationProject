@@ -5,6 +5,10 @@ from flask import Flask, render_template, redirect, url_for
 # Define the WSGI application object
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from config import SQLALCHEMY_DATABASE_URI
 
 app = Flask(__name__)
 # Configurations
@@ -14,6 +18,8 @@ app.config.from_object('config')
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
+# Create engine: engine
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -30,7 +36,7 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     # when unauthorised
-    return redirect(url_for('recommender_mod.index'))
+    return redirect(url_for('views.index'))
 
 
 # Sample HTTP error handling
@@ -54,3 +60,4 @@ app.register_blueprint(rcmdr)
 # Build the database:
 # This will create the database file using SQLAlchemy
 db.create_all()
+

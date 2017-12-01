@@ -9,6 +9,8 @@ from app import db
 
 Base = declarative_base()
 
+#http://flask-appbuilder.readthedocs.io/en/latest/relations.html
+#http://docs.sqlalchemy.org/en/rel_0_9/orm/basic_relationships.html#association-object
 
 class Rating(db.Model):
     __tablename__ = 'ratings'
@@ -30,7 +32,7 @@ class User(db.Model):
     password_plaintext = db.Column(db.String, nullable=False)  # TEMPORARY - TO BE DELETED IN FAVOR OF HASHED PASSWORD
     authenticated = db.Column(db.Boolean, default=False)
 
-
+    #https://pythontips.com/2013/08/07/the-self-variable-in-python-explained/
     def __init__(self, email, username, password_plaintext):
         self.email = email
         self.username = username
@@ -70,8 +72,27 @@ class Recipe(db.Model):
 
     id = Column(Integer, primary_key=True)
     title = db.Column(db.String, unique=True, nullable=False)
-    category = db.Column(db.String, unique=True, nullable=False)
+    category = db.Column(db.String)
 
-    def __init__(self, title, category):
-        self.title = title
+    cook_time = db.Column(Integer)
+    ingredients = db.Column(db.String)
+    instructions = db.Column(db.String)
+    photo_url =  db.Column(db.String)
+    prep_time_minutes = db.Column(Integer)
+    total_time_minutes = db.Column(Integer)
+    rating_stars = db.Column(REAL)
+    review_count = db.Column(Integer)
+
+    def __init__(self, title, category, cook_time, ingredients, instructions, photo_url, prep_time_minutes,
+                 total_time_minutes, rating_stars, review_count):
+
+        self.cook_time = cook_time
         self.category = category
+        self.ingredients = ingredients
+        self.instructions = instructions
+        self.photo_url = photo_url
+        self.prep_time_minutes = prep_time_minutes
+        self.total_time_minutes = total_time_minutes
+        self.rating_stars = rating_stars
+        self.review_count = review_count
+
