@@ -5,6 +5,8 @@ from sqlalchemy.ext.hybrid import hybrid_method
 from app import db
 
 
+
+
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -12,12 +14,13 @@ class User(db.Model):
     email = db.Column(db.String, unique=True, nullable=False)
 
     username = db.Column(db.String, unique=True,  nullable=False)
-    
+
     password_plaintext = db.Column(db.String, nullable=False)  # TEMPORARY - TO BE DELETED IN FAVOR OF HASHED PASSWORD
     authenticated = db.Column(db.Boolean, default=False)
 
-    def __init__(self, email, password_plaintext):
+    def __init__(self, email, username, password_plaintext):
         self.email = email
+        self.username = username
         self.password_plaintext = password_plaintext
         self.authenticated = False
 
@@ -47,3 +50,4 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {0}>'.format(self.email)
+

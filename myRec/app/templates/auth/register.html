@@ -1,32 +1,34 @@
 {% extends "layout.html" %}
 {% block content %}
 
-{% macro render_field(field, placeholder=None) %}
-{% if field.errors %}
-<div>
-{% elif field.flags.error %}
-<div>
-{% else %}
-<div>
-{% endif %}
-    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
-    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
-</div>
-{% endmacro %}
+        {% macro render_field(field, placeholder=None) %}
+        {% if field.errors %}
+        <div>
+            {% elif field.flags.error %}
+            <div>
+                {% else %}
+                <div>
+                {% endif %}
+                    {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+                    {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+                </div>
+                {% endmacro %}
 
-<div class="user-registration page-heading">
-  <div class="page-header">
-    <h2>REGISTER</h2>
-  </div>
-    <form action="{{ url_for('auth.register') }}" method="post">
-    {{ form.csrf_token }}
-    <dl>
-      {{ render_field(form.email, placeholder="Email address") }}
-      {{ render_field(form.password, placeholder="Password") }}
-    </dl>
-    <button class="btn btn-sm submit_btn" type="submit">SUBMIT</button>
-  </form>
-  <em>Already have an account? </em><a href="{{ url_for('auth.login') }}">Login!!</a>
-</div>
-
+                <div class="user-registration page-heading">
+                  <div class="page-header">
+                    <h2>REGISTER</h2>
+                  </div>
+                    <form action="{{ url_for('auth.register') }}" method="post">
+                    {{ form.csrf_token }}
+                    <dl>
+                      {{ render_field(form.email, placeholder="Email address") }}
+                      {{ render_field(form.username, placeholder="Username") }}
+                      {{ render_field(form.password, placeholder="Password") }}
+                    </dl>
+                    <button class="btn btn-sm submit_btn" type="submit">SUBMIT</button>
+                  </form>
+                  <em>Already have an account? </em><a href="{{ url_for('auth.login') }}">Login!!</a>
+                </div>
+            </div>
+        </div>
 {% endblock %}

@@ -42,28 +42,21 @@ def login():
 
 @mod_auth.route('/register', methods=['GET', 'POST'])
 def register():
-    print("1")
     form = SignupForm()
     if request.method == 'GET':
-        print("2")
         return render_template('auth/register.html', form = form)
     if request.method == 'POST':
-        print("3")
         if form.validate_on_submit():
-            print("4")
             if User.query.filter_by(email=form.email.data).first():
-                print("5")
                 return "Email address already exists"
             else:
-                print("6")
-                newuser = User(form.email.data, form.password.data)
+                newuser = User(form.email.data, form.username.data, form.password.data)
                 db.session.add(newuser)
                 db.session.commit()
                 login_user(newuser)
                 print(newuser)
                 return redirect(url_for('recommender_mod.index'))
         else:
-            print("7")
             return "Form didn't validate"
 
 @mod_auth.route('/protected')
