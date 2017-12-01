@@ -46,7 +46,7 @@ def results():
     form = ReviewForm(request.form)
     if request.method == 'POST':
         user_id = current_user.get_id()
-        recommendation = recommend(int(user_id)).head(5)
+        recommendation = recommend(int(user_id)).head(10)
         print(recommendation)
         return render_template('recom/results.html',
                                userId=user_id,

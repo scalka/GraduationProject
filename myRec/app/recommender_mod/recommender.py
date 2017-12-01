@@ -42,8 +42,10 @@ def recommend(user_id):
     recipes_df.head()
     #recipes_df = pd.read_csv('C:\\Users\\calka\\Documents\\Y4\\Recommender\\myRec\\app\\recommender_mod\\datasets\\recipes.csv', index_col='recipes_id')
     user_ratings = predicted_ratings[user_id - 1]
+
     #TODO workaround for now https://stackoverflow.com/questions/42382263/valueerror-length-of-values-does-not-match-length-of-index-pandas-dataframe-u
-    recipes_df['rating'] = pd.Series([user_ratings])
+    user_ratings_df = pd.DataFrame(user_ratings, dtype='str' )
+    recipes_df['rating'] = user_ratings_df
 
     recipes_df = recipes_df.sort_values(by=['rating'], ascending=False)
 
