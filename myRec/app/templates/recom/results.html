@@ -2,7 +2,26 @@
 {% block content %}
     <div class="main_paige">
         <h3>For the user:</h3> {{ userId }}
-        <h3>Recipe recommendations:</h3>
+        <h3>Users who have similar taste like you also like: </h3>
+    <div class="container">
+         <div class="row">
+            {% for key,value in recommendations.iterrows() %}
+
+              <div class="col-md-2  recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                  <a href="#">
+                    <div class="thumbnail">
+
+
+                    </div>
+                      <div class="caption">
+                          <p>{{ value['title'] }}</p>
+                      </div>
+                  </a>
+              </div>
+
+            {% endfor %}
+         </div>
+    </div>
 
         <table>
             <tr>

@@ -31,3 +31,8 @@ body {
 .form-control{
     margin: 5px;
 }
+.recipe_item{
+    margin: 10px;
+    height: 200px;
+    width: 200px;
+}

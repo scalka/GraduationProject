@@ -38,25 +38,36 @@ recommender_mod = Blueprint('recommender_mod', __name__, url_prefix='/recom')
 def index():
     # index f. renders .html
     form = ReviewForm(request.form)
-    return render_template('recom/reviewform.html', form=form)
+    user_id = current_user.get_id()
+    recommendation = recommend(int(user_id)).head(5)
+    print(recommendation)
+    return render_template('recom/results.html',
+                           userId=user_id,
+                           recommendations=recommendation,
+                           id=recommendation[['id']],
+                           title=recommendation[['title']],
+                           category=recommendation[['category']],
+                           photo_url=[['photo_utl']],
+                           rating=recommendation[['rating']],
+                           )
 
-@recommender_mod.route('/results', methods=['POST'])
-@login_required
-def results():
-    form = ReviewForm(request.form)
-    if request.method == 'POST':
-        user_id = current_user.get_id()
-        recommendation = recommend(int(user_id)).head(10)
-        print(recommendation)
-        return render_template('recom/results.html',
-                               userId=user_id,
-                               recommendations=recommendation,
-                               title=recommendation[['title']],
-                               category=recommendation[['category']],
-                               rating=recommendation[['rating']],
-                               )
-
-
+# @recommender_mod.route('/results', methods=['POST'])
+# @login_required
+# def results():
+#     form = ReviewForm(request.form)
+#     if request.method == 'POST':
+#         user_id = current_user.get_id()
+#         recommendation = recommend(int(user_id)).head(10)
+#         print(recommendation)
+#         return render_template('recom/results.html',
+#                                userId=user_id,
+#                                recommendations=recommendation,
+#                                id=recommendation[['id']],
+#                                title=recommendation[['title']],
+#                                category=recommendation[['category']],
+#                                photo_utl=[['photo_utl']],
+#                                rating=recommendation[['rating']],
+#                                )
 
 """
 @recom.route('/thanks', methods=['POST'])
