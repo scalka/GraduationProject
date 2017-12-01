@@ -14,9 +14,9 @@
 </div>
 {% endmacro %}
 
-<div class="user-registration">
+<div class="user-registration page-heading">
   <div class="page-header">
-    <h2>Register</h2>
+    <h2>REGISTER</h2>
   </div>
     <form action="{{ url_for('auth.register') }}" method="post">
     {{ form.csrf_token }}
@@ -24,7 +24,7 @@
       {{ render_field(form.email, placeholder="Email address") }}
       {{ render_field(form.password, placeholder="Password") }}
     </dl>
-    <button class="btn btn-sm btn-success" type="submit">Register</button>
+    <button class="btn btn-sm submit_btn" type="submit">SUBMIT</button>
   </form>
   <em>Already have an account? </em><a href="{{ url_for('auth.login') }}">Login!!</a>
 </div>

@@ -10,6 +10,9 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String, unique=True, nullable=False)
+
+    username = db.Column(db.String, unique=True,  nullable=False)
+    
     password_plaintext = db.Column(db.String, nullable=False)  # TEMPORARY - TO BE DELETED IN FAVOR OF HASHED PASSWORD
     authenticated = db.Column(db.Boolean, default=False)
 

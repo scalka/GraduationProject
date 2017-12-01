@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
+
+    <div class="main_paige">
         <h4>Enter a user_id to get recommendations (Between 1 and 100):</h4>
 
         {% from "_formhelpers.html" import render_field %}
@@ -12,4 +14,7 @@
                 <input type=submit value='Submit user id' name='submit_btn'>
             </div>
         </form>
+    </div>
+
+
 {% endblock %}

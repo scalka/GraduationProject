@@ -1,0 +1,33 @@
+body {
+    background-color: #3C3530;
+}
+.main_paige{
+    background-color: white;
+}
+.register_btn{
+
+}
+.submit_btn{
+    background-color: #F16B6F;
+    font-weight: 700;
+    color: white;
+}
+.submit_btn:hover{
+    color:#ffffff;
+    background-color: #3C3530;
+}
+.page-heading {
+    text-align: center;
+    justify-content: center;
+}
+.user-registration {
+    margin-top: 35px;
+    background-color: #AACD6E;
+    border-radius: 25px;
+    max-width: 500px;
+    padding: 20px;
+    color: #ffffff;
+}
+.form-control{
+    margin: 5px;
+}

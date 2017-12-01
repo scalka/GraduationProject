@@ -14,19 +14,21 @@
 </div>
 {% endmacro %}
 
-<div class="user-registration">
-  <div class="page-header">
-    <h2>Log In</h2>
+  <div class="user-registration text-center">
+    <div class="page-header">
+      <h2 class="page-heading">LOGIN</h2>
+    </div>
+      <form action="{{ url_for('auth.login') }}" method="post">
+      {{ form.csrf_token }}
+      <dl>
+        {{ render_field(form.email, placeholder="Email address") }}
+        {{ render_field(form.password, placeholder="Password") }}
+      </dl>
+      <button class="btn btn-sm submit_btn" type="submit">SUBMIT</button>
+    </form>
+    <em>Need an account? </em><a href="{{ url_for('auth.register') }}">Signup!!</a>
   </div>
-    <form action="{{ url_for('auth.login') }}" method="post">
-    {{ form.csrf_token }}
-    <dl>
-      {{ render_field(form.email, placeholder="Email address") }}
-      {{ render_field(form.password, placeholder="Password") }}
-    </dl>
-    <button class="btn btn-sm btn-success" type="submit">Log In</button>
-  </form>
-  <em>Need an account? </em><a href="{{ url_for('auth.register') }}">Signup!!</a>
-</div></div></div>
+</div>
+</div>
 
 {% endblock %}
