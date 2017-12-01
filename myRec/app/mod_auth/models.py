@@ -1,22 +1,35 @@
 # Import the database object (db) from the main application module
 # We will define this inside /app/__init__.py in the next sections.
+from sqlalchemy import Table, Column, Integer, ForeignKey, REAL
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_method
+from sqlalchemy.orm import relationship
 
 from app import db
 
+Base = declarative_base()
 
+
+class Rating(db.Model):
+    __tablename__ = 'ratings'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(Integer, ForeignKey('user.id'), nullable=False)
+    user = relationship("User")
+    recipe_id = db.Column(Integer, ForeignKey('recipe.id'), nullable=False)
+    recipe = relationship("Recipe")
+    rating = db.Column(REAL)
 
 
 class User(db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String, unique=True, nullable=False)
-
-    username = db.Column(db.String, unique=True,  nullable=False)
-
+    username = db.Column(db.String, unique=True, nullable=False)
     password_plaintext = db.Column(db.String, nullable=False)  # TEMPORARY - TO BE DELETED IN FAVOR OF HASHED PASSWORD
     authenticated = db.Column(db.Boolean, default=False)
+
 
     def __init__(self, email, username, password_plaintext):
         self.email = email
@@ -51,3 +64,14 @@ class User(db.Model):
     def __repr__(self):
         return '<User {0}>'.format(self.email)
 
+
+class Recipe(db.Model):
+    __tablename__ = 'recipe'
+
+    id = Column(Integer, primary_key=True)
+    title = db.Column(db.String, unique=True, nullable=False)
+    category = db.Column(db.String, unique=True, nullable=False)
+
+    def __init__(self, title, category):
+        self.title = title
+        self.category = category
