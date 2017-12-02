@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="content">
+        <div id="index_cont" class="user-registration text-center">
+            <div class="page-header">
+              <h2 class="page-heading">Personalised recipe recommendations just for you!</h2>
+            </div>
 
-<div id="index_cont" class="user-registration text-center">
-    <div class="page-header">
-      <h2 class="page-heading">Personalised recipe recommendations just for you!</h2>
+
+             <a class="btn btn-lg submit_btn" href="{{ url_for('auth.login') }}">LOGIN</a>
+             <a class="btn btn-lg submit_btn" href="{{ url_for('auth.register') }}">REGISTER</a>
+
+
+
+          </div>
     </div>
-
-
-     <a class="btn btn-lg submit_btn" href="{{ url_for('auth.login') }}">LOGIN</a>
-     <a class="btn btn-lg submit_btn" href="{{ url_for('auth.register') }}">REGISTER</a>
-
-
-
-  </div>
 {% endblock %}

@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="main_paige">
-        <h3>For the user:</h3> {{ userId }}
-        <h3>Users who have similar taste like you also like: </h3>
+    <div class="main_paige content">
+
     <div class="container">
-         <div class="row">
+        <!--Matrix factorisation-->
+        <h3>Users who have similar taste like you also like: </h3>
+        <div class="row">
             {% for key,value in recommendations.iterrows() %}
 
               <div class="col-md-2  recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
@@ -21,8 +22,31 @@
 
             {% endfor %}
          </div>
+
+        <!--Popular-->
+        <h3>Popular recipes: </h3>
+        <div class="row">
+            {% for key,value in popular_recipes.iterrows() %}
+
+              <div class="col-md-2  recipe_item" style="background-image: url('{{ value.photo_url }}');">
+                  <a href="#">
+                    <div class="thumbnail">
+
+
+                    </div>
+                      <div class="caption">
+                          <p>{{ value.title }}</p>
+                      </div>
+                  </a>
+              </div>
+
+            {% endfor %}
+         </div>
     </div>
 
+
+
+<!--    Old table
         <table>
             <tr>
                 <th>Title</th>
@@ -36,23 +60,8 @@
                 <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['rating'] }}</option> </td>
             </tr>
             {% endfor %}
-        </table>
+        </table>-->
 
-        <div id='button1'>
-            <form action="/thanks" method="post">
-                <input type=submit value='Correct'
-                name='feedback_button'>
-                <input type=submit value='Incorrect'
-                name='feedback_button'>
-                <input type=hidden value='{{ prediction }}'
-                name='prediction'>
-                <input type=hidden value='{{ content }}' name='review'>
-            </form>
-        </div>
-        <div id='button2'>
-            <form action="/">
-                <input type=submit value='Submit another review'>
-            </form>
-        </div>
+
     </div>
 {% endblock %}

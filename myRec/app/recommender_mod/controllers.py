@@ -9,45 +9,48 @@ from flask import Blueprint, request, render_template, \
 from flask_login import login_required, current_user
 
 # Import module forms
-from app import User
+from sqlalchemy import literal_column, select
+
+from app import User, engine
 from app.recommender_mod.forms import ReviewForm
 
 # Import module models (i.e. User)
 #from app.recommender_mod.recommender import recommend
-from app.recommender_mod.recommender import recommend
+from app.recommender_mod.mf_recommender import mf_recommend
 
-cur_dir = os.path.dirname(__file__)
-U = pickle.load(open(os.path.join(cur_dir,
-                                            'pkl_objects',
-                                            'user_features_recipes.dat'), 'rb'))
-R = pickle.load(open(os.path.join(cur_dir,
-                                            'pkl_objects',
-                                            'product_features_recipes.dat'), 'rb'))
-predicted_ratings = pickle.load(open(os.path.join(cur_dir,
-                                            'pkl_objects',
-                                            'predicted_ratings_recipes.dat'), 'rb'))
 
 
 
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
+from app.recommender_mod.pop_recommender import pop_recommend
+
 recommender_mod = Blueprint('recommender_mod', __name__, url_prefix='/recom')
 
 @recommender_mod.route('/reviewform')
 @login_required
 def index():
-    # index f. renders .html
-    form = ReviewForm(request.form)
     user_id = current_user.get_id()
-    recommendation = recommend(int(user_id)).head(5)
-    print(recommendation)
+    #Get user name
+    conn = engine.connect()
+    #s = select(* from 'user').where('user.id' == user_id)
+    n = conn.execute('select username from user where user.id == ' + user_id)
+    name = n.fetchall()
+    conn.close()
+    #matrix factorization recommendation
+    recommendation = mf_recommend(int(user_id)).head(5)
+    #popularity recommendation
+    popular_recipe = pop_recommend().head(5)
+    print(popular_recipe[['title']])
     return render_template('recom/results.html',
                            userId=user_id,
+                           name = name,
+                           popular_recipes=popular_recipe,
                            recommendations=recommendation,
                            id=recommendation[['id']],
                            title=recommendation[['title']],
                            category=recommendation[['category']],
-                           photo_url=[['photo_utl']],
+                           photo_url=recommendation[['photo_url']],
                            rating=recommendation[['rating']],
                            )
 

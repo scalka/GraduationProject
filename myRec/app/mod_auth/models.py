@@ -71,7 +71,7 @@ class Recipe(db.Model):
     __tablename__ = 'recipe'
 
     id = Column(Integer, primary_key=True)
-    title = db.Column(db.String, unique=True, nullable=False)
+    title = db.Column(db.String, nullable=False)
     category = db.Column(db.String)
 
     cook_time = db.Column(Integer)

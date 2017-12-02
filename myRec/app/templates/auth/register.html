@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+    <div class="content">
         {% macro render_field(field, placeholder=None) %}
         {% if field.errors %}
         <div>
@@ -31,4 +31,5 @@
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}
