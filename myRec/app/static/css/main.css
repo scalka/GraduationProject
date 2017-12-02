@@ -44,3 +44,11 @@
     height: 200px;
     width: 200px;
 }
+.caption{
+    margin-left: 10px;
+    max-width: 100%;
+    color: #3C3530;
+}
+.caption p {
+    max-width: 200px;
+}

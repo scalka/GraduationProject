@@ -7,19 +7,13 @@
         <h3>Users who have similar taste like you also like: </h3>
         <div class="row">
             {% for key,value in recommendations.iterrows() %}
-
-              <div class="col-md-2  recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
-                  <a href="#">
-                    <div class="thumbnail">
-
-
+                <a href="#">
+                  <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                  </div>
+                    <div class="caption">
+                        <p>{{ value['title'] }}</p>
                     </div>
-                      <div class="caption">
-                          <p>{{ value['title'] }}</p>
-                      </div>
-                  </a>
-              </div>
-
+                </a>
             {% endfor %}
          </div>
 
@@ -27,18 +21,13 @@
         <h3>Popular recipes: </h3>
         <div class="row">
             {% for key,value in popular_recipes.iterrows() %}
-
-              <div class="col-md-2  recipe_item" style="background-image: url('{{ value.photo_url }}');">
-                  <a href="#">
-                    <div class="thumbnail">
-
-
-                    </div>
-                      <div class="caption">
-                          <p>{{ value.title }}</p>
-                      </div>
-                  </a>
-              </div>
+            <a href="#">
+                <div class="recipe_item" style="background-image: url('{{ value.photo_url }}');">
+                </div>
+                <div class="caption">
+                  <p>{{ value.title }}</p>
+                </div>
+            </a>
 
             {% endfor %}
          </div>
