@@ -10,10 +10,10 @@ from werkzeug import check_password_hash, generate_password_hash
 from app import db
 
 # Import module forms
-from app.mod_auth.forms import LoginForm, SignupForm
+from app.auth_comp.forms import LoginForm, SignupForm
 
 # Import module models (i.e. User)
-from app.mod_auth.models import User
+from app.auth_comp.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
@@ -34,7 +34,7 @@ def login():
                 login_user(user)
                 flash('Thanks for logging in, {}'.format(current_user.email))
                 print("login successful")
-                return redirect(url_for('recommender_mod.index'))
+                return redirect(url_for('recommender_comp.index'))
             else:
                 print("login unsuccessful")
                 flash('ERROR! Incorrect login credentials.', 'error')
@@ -55,7 +55,7 @@ def register():
                 db.session.commit()
                 login_user(newuser)
                 print(newuser)
-                return redirect(url_for('recommender_mod.index'))
+                return redirect(url_for('recommender_comp.index'))
         else:
             return "Form didn't validate"
 

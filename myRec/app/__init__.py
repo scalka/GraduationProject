@@ -25,7 +25,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "auth.signin"
 
-from app.mod_auth.models import User
+from app.auth_comp.models import User
 
 
 @login_manager.user_loader
@@ -45,10 +45,10 @@ def not_found(error):
     return render_template('404.html'), 404
 
 
-# Import a module / component using its blueprint handler variable (mod_auth)
+# Import a module / component using its blueprint handler variable (auth_comp)
 from app.controllers import views
-from app.mod_auth.controllers import mod_auth as auth_module
-from app.recommender_mod.controllers import recommender_mod as rcmdr
+from app.auth_comp.controllers import mod_auth as auth_module
+from app.recommender_comp.controllers import recommender_mod as rcmdr
 
 # Register blueprint(s)
 app.register_blueprint(views)

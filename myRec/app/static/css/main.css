@@ -10,6 +10,20 @@
     background-color: white;
     margin: 20px 30px;
 }
+nav {
+    background-color: #3C3530;
+    color: white;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+}
+#user_icon{
+    width: 50px;
+	height: 50px;
+	background: #AACD6E;
+    margin: 5px;
+}
 .register_btn{
 
 }

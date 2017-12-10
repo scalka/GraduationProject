@@ -12,20 +12,20 @@ from flask_login import login_required, current_user
 from sqlalchemy import literal_column, select
 
 from app import User, engine
-from app.recommender_mod.forms import ReviewForm
+from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
-#from app.recommender_mod.recommender import recommend
-from app.recommender_mod.mf_recommender import mf_recommend
+#from app.recommender_comp.recommender import recommend
+from app.recommender_comp.mf_recommender import mf_recommend
 
 
 
 
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
-from app.recommender_mod.pop_recommender import pop_recommend
+from app.recommender_comp.pop_recommender import pop_recommend
 
-recommender_mod = Blueprint('recommender_mod', __name__, url_prefix='/recom')
+recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 
 @recommender_mod.route('/reviewform')
 @login_required
@@ -54,7 +54,7 @@ def index():
                            rating=recommendation[['rating']],
                            )
 
-# @recommender_mod.route('/results', methods=['POST'])
+# @recommender_comp.route('/results', methods=['POST'])
 # @login_required
 # def results():
 #     form = ReviewForm(request.form)

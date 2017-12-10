@@ -8,7 +8,8 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
+      <div id="user_icon"></div>
       <a class="navbar-brand" href="#"> {{ name }} </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,9 +24,9 @@
             <a class="nav-link" href="{{ url_for('auth.register') }}"> Register</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{ url_for('recommender_mod.index') }}">Form </a>
+            <a class="nav-link dropdown-toggle" href="{{ url_for('recommender_comp.index') }}">Form </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('recommender_mod.index') }}"> Recommendations </a>
+              <a class="dropdown-item" href="{{ url_for('recommender_comp.index') }}"> Recommendations </a>
             </div>
           </li>
           {% if current_user.is_authenticated %}
