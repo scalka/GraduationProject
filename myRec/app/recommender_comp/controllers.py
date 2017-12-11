@@ -35,7 +35,11 @@ def index():
     conn = engine.connect()
     #s = select(* from 'user').where('user.id' == user_id)
     n = conn.execute('select username from user where user.id == ' + user_id)
-    name = n.fetchall()
+    """The result of the query is being represented as a Python list of Python tuples [('Philip',)]
+        The tuples contained in the list represent the rows returned by your query.
+        Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
+    name_tuple = n.fetchall()
+    name = name_tuple[0][0]
     conn.close()
     #matrix factorization recommendation
     recommendation = mf_recommend(int(user_id)).head(5)
@@ -44,7 +48,7 @@ def index():
     print(popular_recipe[['title']])
     return render_template('recom/results.html',
                            userId=user_id,
-                           name = name,
+                           name=name,
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
                            id=recommendation[['id']],
