@@ -18,10 +18,6 @@ from app.recommender_comp.forms import ReviewForm
 #from app.recommender_comp.recommender import recommend
 from app.recommender_comp.mf_recommender import mf_recommend
 
-
-
-
-
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 from app.recommender_comp.pop_recommender import pop_recommend
 
