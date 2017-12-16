@@ -24,7 +24,6 @@ class QuotesSpider(scrapy.Spider):
             more_reviews.click()
             time.sleep(3) # waiting 3 seconds for the page to load fully
 
-
         for item in response.css('div.recipe-container-outer'):
             recipe = Recipe()
             recipe['id'] = response.url
