@@ -20,3 +20,4 @@ class Rating(scrapy.Item):
     user = scrapy.Field()
     rating = scrapy.Field()
     pass
+
