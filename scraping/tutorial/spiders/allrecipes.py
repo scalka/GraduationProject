@@ -5,10 +5,13 @@ from tutorial.items import Recipe, Rating
 class RecipesSpider(scrapy.Spider):
     # identifies the Spider, unique in project
     name = "all-recipes"
+    """
     start_urls = [
         'http://allrecipes.com/recipe/222191/',
         'http://allrecipes.com/recipe/241480/',
     ]
+    """
+    start_urls = ['http://allrecipes.com/recipe/%s/' % page for page in range(6664,258791)]
     # handle the response downloaded for each of the requests made
     # response is an instance of TextResponse and holds the page content and has further helpful methods to handle it
     # parse method is a scrapy default callback m., it parses the response, extracts the data as dicts and finds new URLs to follow and creates new requests from them
@@ -24,18 +27,12 @@ class RecipesSpider(scrapy.Spider):
 
 class RatingSpider(scrapy.Spider):
     name = "all-ratings"
-    start_urls = [
-        'http://allrecipes.com/recipe/222191/lamb-braised-in-pomegranate/?internalSource=rotd&referringId=80&referringContentType=recipe%20hub',
-        'http://allrecipes.com/recipe/241480/braised-lamb-shoulder-chops/?internalSource=similar_recipe_banner&referringId=222191&referringContentType=recipe&clickId=simslot_1',
-    ]
+    start_urls = ['http://allrecipes.com/recipe/%s/' % page for page in range(6684, 6686)]
     # for user in response.css('review-container clearfix'):
     def parse(self, response):
         for user in response.xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "review-container", " " ))]'):
             rating = Rating()
             rating['id'] = response.url
-            rating['user'] = user.xpath(
-                './/*[contains(concat( " ", @class, " " ), concat( " ", "cook-info", " " ))] //h4  //text() ').extract_first()
-            rating['rating'] = user.xpath(
-                './/*[contains(concat( " ", @class, " " ), concat( " ", "stars-and-date-container", " " ))] //span /@class ').extract_first()
-            print(rating)
+            rating['user'] = user.xpath('.//*[contains(concat( " ", @class, " " ), concat( " ", "cook-info", " " ))] //h4  //text() ').extract_first()
+            rating['rating'] = user.xpath('.//*[contains(concat( " ", @class, " " ), concat( " ", "stars-and-date-container", " " ))] //span /@class ').extract_first()
             yield rating
