@@ -2,3 +2,4 @@ firstFlaskApp/datasets/recipes.csv
 *.db
 *.dat
 *.csv
+*.xlsx
