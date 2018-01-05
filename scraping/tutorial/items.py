@@ -19,5 +19,7 @@ class Rating(scrapy.Item):
     id = scrapy.Field()
     user = scrapy.Field()
     rating = scrapy.Field()
+    category = scrapy.Field()
+    calories = scrapy.Field()
     pass
 

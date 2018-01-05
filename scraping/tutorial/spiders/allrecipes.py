@@ -27,7 +27,7 @@ class RecipesSpider(scrapy.Spider):
 
 class RatingSpider(scrapy.Spider):
     name = "all-ratings"
-    start_urls = ['http://allrecipes.com/recipe/%s/' % page for page in range(6684, 6686)]
+    start_urls = ['http://allrecipes.com/recipe/%s/' % page for page in range(12895, 258791)]
     # for user in response.css('review-container clearfix'):
     def parse(self, response):
         for user in response.xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "review-container", " " ))]'):
@@ -35,4 +35,7 @@ class RatingSpider(scrapy.Spider):
             rating['id'] = response.url
             rating['user'] = user.xpath('.//*[contains(concat( " ", @class, " " ), concat( " ", "cook-info", " " ))] //h4  //text() ').extract_first()
             rating['rating'] = user.xpath('.//*[contains(concat( " ", @class, " " ), concat( " ", "stars-and-date-container", " " ))] //span /@class ').extract_first()
-            yield rating
+        for item in response.css('div.recipe-container-outer'):
+            rating['category'] = item.xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "toggle-similar__title", " " ))]//text() ').extract()[2].strip()
+            rating['calories'] = item.xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "calorie-count", " " ))]//span //text() ').extract_first()
+        yield rating
