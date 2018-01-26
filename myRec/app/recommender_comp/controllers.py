@@ -12,7 +12,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import literal_column, select
 
 from app import User, engine
-from app.recommender_comp.categories import find_categories
+from app.recommender_comp.categories import find_categories, display_recipes_from_category
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -79,17 +79,14 @@ def index():
 #                                rating=recommendation[['rating']],
 #                                )
 
-"""
-@recom.route('/thanks', methods=['POST'])
-def feedback():
-    feedback = request.form['feedback_button']
-    review = request.form['review']
-    prediction = request.form['prediction']
-    inv_label = {'negative': 0, 'positive': 1}
-    y = inv_label[prediction]
-    if feedback == 'Incorrect':
-    y = int(not(y))
-    train(review, y)
-    sqlite_entry(db, review, y)
-    return render_template('thanks.html')
-"""
+
+
+@recommender_mod.route('/category/<category>')
+@recommender_mod.route('/category/<category>/<int:page>')
+@login_required
+def display_category(category):
+    recipes_cat = display_recipes_from_category(category).paginate(page, 5, False).items
+    print(recipes_cat)
+    return render_template('category_page.html',
+                           recipes = recipes_cat,
+                           cat=category)

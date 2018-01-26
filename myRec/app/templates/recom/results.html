@@ -8,7 +8,7 @@
         <div class="row scrollmenu">
             {% for cat in categories %}
                 <div class="col-xs-4">
-                    <a href="#">
+                    <a href="{{ url_for('recommender_comp.display_category', category=cat) }}">
                         <div class="cat">
                             <p>{{ cat }}</p>
                         </div>
