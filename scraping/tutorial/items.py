@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
 # project items definition file
-# Define here the models for your scraped items
-#
-# See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
+# Defines the models for scraped items
 
 import scrapy
-
+# recipe model
 class Recipe(scrapy.Item):
-    # define the fields for your item here like:
+    # defines the fields for item
     id = scrapy.Field()
     category = scrapy.Field()
     calories = scrapy.Field()
     pass
-
+# rating model
 class Rating(scrapy.Item):
-    # define the fields for your item here like:
     id = scrapy.Field()
     user = scrapy.Field()
     rating = scrapy.Field()

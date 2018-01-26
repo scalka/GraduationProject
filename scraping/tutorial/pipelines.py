@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 # project pipelines file
 # Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+
 import csv
-
-
 
 class TutorialPipeline(object):
     def process_item(self, item, spider):

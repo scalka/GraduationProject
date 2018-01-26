@@ -73,7 +73,6 @@ class Recipe(db.Model):
     id = Column(Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     category = db.Column(db.String)
-
     cook_time = db.Column(Integer)
     ingredients = db.Column(db.String)
     instructions = db.Column(db.String)
@@ -82,12 +81,15 @@ class Recipe(db.Model):
     total_time_minutes = db.Column(Integer)
     rating_stars = db.Column(REAL)
     review_count = db.Column(Integer)
+    calories = db.Column(Integer)
+    url = db.Column(db.String)
 
-    def __init__(self, title, category, cook_time, ingredients, instructions, photo_url, prep_time_minutes,
-                 total_time_minutes, rating_stars, review_count):
+    def __init__(self, title, cook_time, ingredients, instructions, photo_url, url, prep_time_minutes,
+                 total_time_minutes, rating_stars, review_count, category, calories):
 
-        self.cook_time = cook_time
+        self.title - title
         self.category = category
+        self.cook_time = cook_time
         self.ingredients = ingredients
         self.instructions = instructions
         self.photo_url = photo_url
@@ -95,4 +97,6 @@ class Recipe(db.Model):
         self.total_time_minutes = total_time_minutes
         self.rating_stars = rating_stars
         self.review_count = review_count
+        self.calories = calories
+        self.url = url
 

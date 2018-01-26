@@ -5,12 +5,7 @@ from tutorial.items import Recipe, Rating
 class RecipesSpider(scrapy.Spider):
     # identifies the Spider, unique in project
     name = "all-recipes"
-    """
-    start_urls = [
-        'http://allrecipes.com/recipe/222191/',
-        'http://allrecipes.com/recipe/241480/',
-    ]
-    """
+    # starting url for the spider
     start_urls = ['http://allrecipes.com/recipe/%s/' % page for page in range(6664,258791)]
     # handle the response downloaded for each of the requests made
     # response is an instance of TextResponse and holds the page content and has further helpful methods to handle it
