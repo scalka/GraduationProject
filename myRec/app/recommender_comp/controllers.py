@@ -12,6 +12,7 @@ from flask_login import login_required, current_user
 from sqlalchemy import literal_column, select
 
 from app import User, engine
+from app.recommender_comp.categories import find_categories
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -36,12 +37,17 @@ def index():
         Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
     name_tuple = n.fetchall()
     name = name_tuple[0][0]
+
     conn.close()
     #matrix factorization recommendation
     recommendation = mf_recommend(int(user_id)).head(5)
     #popularity recommendation
     popular_recipe = pop_recommend().head(5)
     print(popular_recipe[['title']])
+
+    #get categories
+    categories = find_categories()
+    print(categories)
     return render_template('recom/results.html',
                            userId=user_id,
                            name=name,
@@ -52,6 +58,7 @@ def index():
                            category=recommendation[['category']],
                            photo_url=recommendation[['photo_url']],
                            rating=recommendation[['rating']],
+                           categories=categories
                            )
 
 # @recommender_comp.route('/results', methods=['POST'])

@@ -2,36 +2,51 @@
 {% block content %}
     <div class="main_paige content">
 
-    <div class="container">
-
-
-
+    <div class="container cat_cont">
+        <!--Categories-->
+        <h3>Categories:  </h3>
+        <div class="row scrollmenu">
+            {% for cat in categories %}
+                <div class="col-xs-4">
+                    <a href="#">
+                        <div class="cat">
+                            <p>{{ cat }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="container recipe_cont">
         <!--Matrix factorisation-->
         <h3>Users like you also liked: </h3>
         <div class="row">
             {% for key,value in recommendations.iterrows() %}
-                <a href="#">
-                  <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
-                  </div>
-                    <div class="caption">
-                        <p>{{ value['title'] }}</p>
-                    </div>
-                </a>
+                <div class="col-xs-4">
+                    <a href="#">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
             {% endfor %}
          </div>
 
         <!--Popular-->
         <h3>Popular recipes: </h3>
-        <div class="row">
+        <div class="row scrollmenu">
             {% for key,value in popular_recipes.iterrows() %}
-            <a href="#">
-                <div class="recipe_item" style="background-image: url('{{ value.photo_url }}');">
-                </div>
-                <div class="caption">
-                  <p>{{ value.title }}</p>
-                </div>
-            </a>
-
+            <div class="col-xs-4">
+                <a href="#">
+                    <div class="recipe_item" style="background-image: url('{{ value.photo_url }}');">
+                    </div>
+                    <div class="caption">
+                      <p>{{ value.title }}</p>
+                    </div>
+                </a>
+            </div>
             {% endfor %}
          </div>
     </div>
