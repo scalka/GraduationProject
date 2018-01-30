@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="main_paige content">
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <img class="detail-img" src="{{ recipe_details[0][6] }}">
+
+                </div>
+                <div class="col-sm detail-banner">
+                    <h1 class="white-h"> {{ recipe_details[0][1] }} </h1>
+                    <div class="row">
+                        <div class="col-sm">
+                            Preparation time: {{ recipe_details[0][8] }}
+                        </div>
+                        <div class="col-sm">
+                            Total time: {{ recipe_details[0][9] }}
+                        </div>
+                        <div class="col-sm">
+                            Rating: {{ recipe_details[0][10] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h2>Ingredients: </h2>
+
+                    {% set list1 = recipe_details[0][4].split("', '") %}
+                    {% for list in list1 %}
+                    <ul>
+                        <li>{{ list | replace("['","") | replace("']","") }}</li>
+                    </ul>
+                    {% endfor %}
+
+                </div>
+                <div class="col-sm">
+                    <h2>Method: </h2>
+                    {{ recipe_details[0][5] }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
