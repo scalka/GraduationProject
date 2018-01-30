@@ -6,6 +6,16 @@
     background-color: #3C3530;
     z-index: -10;
 }
+h4 {
+    color:white;
+    font-size: 12px;
+    display: inline;
+}
+h5 {
+    color:white;
+    font-size: 11px;
+    display: inline;
+}
 .main_paige{
     background-color: white;
     margin: 20px 30px;
@@ -120,7 +130,24 @@ nav a {
 }
 .detail-banner {
     background-color: #F16B6F;
+    padding: 20px;
+    margin-left: -100px;
+    margin-top: 20px;
 }
+
+.detail-desc-row{
+    margin: 20px;
+}
+
+.detail-desc {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.detail-desc > span {
+    color: #a3865b;
+}
+
 
 .detail-img {
     width: 100%;
@@ -128,4 +155,13 @@ nav a {
 .white-h {
     text-transform: uppercase;
     color: white;
+}
+.recipe-instruction ul {
+    list-style-type: none;
+}
+
+.recipe-instruction ul li:before {
+    content: '\2014';
+    position: absolute;
+    margin-left: -20px;
 }
