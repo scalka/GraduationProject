@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="main_paige content">
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <img class="detail-img" src="{{ recipe_details[0][6] }}">
+
+                </div>
+                <div class="col-sm ">
+                    <div class="row detail-banner">
+                        <h1 class="white-h "> {{ recipe_details[0][1] }} </h1>
+                        <div class="col-sm">
+                            <img src= {{ url_for('static', filename='images/hat.png') }} alt="hat icon">
+
+                            <h5>Preparation time: {{ recipe_details[0][7] }}</h5>
+                        </div>
+                        <div class="col-sm">
+                            <img src= {{ url_for('static', filename='images/timer.png') }} alt="timer icon">
+                            <h5>Total time: {{ recipe_details[0][8] }} </h5>
+                        </div>
+                        <div class="col-sm">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon">
+                                    <h4>{{ recipe_details[0][9] }} / 5 </h4>
+                                    <h5>{{ recipe_details[0][10] }}</h5>
+                                </div>
+                                <div class="col-sm">
+                                    <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon" width="15px">
+                                    <h5>Rate this recipe</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row detail-desc-row">
+                        <div class="col-sm">
+                            <h3 class="detail-desc"><span>CATEGORY</span> {{ recipe_details[0][2] }}</h3>
+                        </div>
+                        <div class="col-sm">
+                            <h3 class="detail-desc"><span>CALORIES</span> {{ recipe_details[0][11] }}<h3>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row recipe-instruction">
+                <div class="col-sm">
+                    <h2>Ingredients: </h2>
+
+                    {% set list1 = recipe_details[0][4].split("', '") %}
+                    <ul>
+                    {% for list in list1 %}
+
+                        <li>{{ list | replace("['","") | replace("']","") }}</li>
+
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm">
+                    <h2>Method: </h2>
+
+
+                    {% set list1 = recipe_details[0][5].split("', '") %}
+                    <ol>
+                    {% for list in list1 %}
+                        <li>{{ list | replace("['","") | replace("']","") }}</li>
+                    {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

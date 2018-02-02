@@ -11,7 +11,8 @@ from flask_login import login_required, current_user
 # Import module forms
 from sqlalchemy import literal_column, select
 
-from app import User, engine
+from app import User, engine, app
+from app.pagination.Pagination import Pagination
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
 from app.recommender_comp.forms import ReviewForm
 
@@ -61,6 +62,22 @@ def index():
                            categories=categories
                            )
 
+
+@recommender_mod.route('/category/<recipe_id>')
+@login_required
+def recipe_details(recipe_id):
+    conn = engine.connect()
+    # s = select(* from 'user').where('user.id' == user_id)
+    r = conn.execute('select * from recipe where recipe.id == ' + recipe_id)
+    r_tuple = r.fetchall()
+    recipe = r_tuple[0][0]
+    conn.close()
+    print(r_tuple)
+
+    return render_template('recipe_detail.html',
+                           recipe_details = r_tuple
+                           )
+
 # @recommender_comp.route('/results', methods=['POST'])
 # @login_required
 # def results():
@@ -81,12 +98,16 @@ def index():
 
 
 
-@recommender_mod.route('/category/<category>')
+@recommender_mod.route('/category/<category>/', defaults={'page': 1})
 @recommender_mod.route('/category/<category>/<int:page>')
 @login_required
-def display_category(category):
-    recipes_cat = display_recipes_from_category(category).paginate(page, 5, False).items
-    print(recipes_cat)
+def display_category(category, page):
+    #PER_PAGE = 5
+    #count = len(recipes_cat)
+    recipes_cat = display_recipes_from_category(category)
+    #pagination = Pagination(page, PER_PAGE, count)
     return render_template('category_page.html',
                            recipes = recipes_cat,
-                           cat=category)
+                           cat=category,
+                           #pagination=pagination
+                            )

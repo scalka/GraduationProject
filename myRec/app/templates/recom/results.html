@@ -23,7 +23,7 @@
         <div class="row">
             {% for key,value in recommendations.iterrows() %}
                 <div class="col-xs-4">
-                    <a href="#">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
                       <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
                       </div>
                         <div class="caption">
@@ -39,7 +39,7 @@
         <div class="row scrollmenu">
             {% for key,value in popular_recipes.iterrows() %}
             <div class="col-xs-4">
-                <a href="#">
+                <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
                     <div class="recipe_item" style="background-image: url('{{ value.photo_url }}');">
                     </div>
                     <div class="caption">
