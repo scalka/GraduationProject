@@ -63,7 +63,7 @@ def index():
                            )
 
 
-@recommender_mod.route('/category/<recipe_id>')
+@recommender_mod.route('/category/<recipe_id>', methods=['POST', 'GET'])
 @login_required
 def recipe_details(recipe_id):
     conn = engine.connect()
@@ -71,9 +71,21 @@ def recipe_details(recipe_id):
     r = conn.execute('select * from recipe where recipe.id == ' + recipe_id)
     r_tuple = r.fetchall()
     recipe = r_tuple[0][0]
-    conn.close()
-    print(r_tuple)
 
+    if request.method == 'POST':
+        rating = request.form.get('test_name')
+        userId = current_user.get_id()
+        recipeId = recipe_id
+        #q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
+        #check = q.fetchall()
+
+        #if :
+        #    print("update")
+       # else:
+           # print("insert")
+        conn.execute('insert into ratings (user_id, recipe_id, rating) values (? , ? , ? )', (userId, recipeId, rating, ))
+
+    conn.close()
     return render_template('recipe_detail.html',
                            recipe_details = r_tuple
                            )

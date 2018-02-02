@@ -30,13 +30,30 @@
 
                                     </div>
                                     <div class="col-sm">
-                                        <h4><span>{{ recipe_details[0][9] }}</span> / 5 </h4>
-                                        <h5>{{ recipe_details[0][10] }}</h5>
+                                        <h4><span>{{ recipe_details[0][9] }}</span> / 5 <br>
+                                        {{ recipe_details[0][10] }}</h4>
                                     </div>
                                     <div class="col-sm">
-                                        <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon" width="15px">
-                                        <h5>Rate this recipe</h5>
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src= {{ url_for('static', filename='images/star.png') }} class="small-star" alt="star icon" width="15px">
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <form action="{{ url_for('recommender_comp.recipe_details', recipe_id=recipe_details[0][0]) }}" method="POST">
+
+                                                        <input class="dropdown-item" type="submit" name="test_name" value="1"></input>
+                                                        <input class="dropdown-item" type="submit" name="test_name" value="2"></input>
+                                                        <input class="dropdown-item" type="submit" name="test_name" value="3"></input>
+                                                        <input class="dropdown-item" type="submit" name="test_name" value="4"></input>
+                                                        <input class="dropdown-item" type="submit" name="test_name" value="5"></input>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>

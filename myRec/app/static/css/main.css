@@ -165,15 +165,20 @@ nav a {
     position: absolute;
     margin-left: -20px;
 }
+.small-star {
+    margin: 3px;
+}
 
 .star{
     padding: 0;
     margin: 0;
+    max-width: 40px;
 }
 
 .star + .col-sm{
     padding: 0;
     margin: 0;
+    max-width: 60px;
 }
 .star + .col-sm > h4 > span {
     font-size: larger;
@@ -190,4 +195,21 @@ nav a {
     left: 0;
     height: 50%;
     width: 1px;
+}
+
+.input-group {
+    position: absolute;
+}
+.input-group > .input-group-btn > .btn{
+    background-color: #f99c9c;
+    border: none;
+}
+.input-group > .input-group-btn > .btn:hover{
+    background-color: #F16B6F;
+}
+.dropdown-menu {
+    background-color: lightslategray;
+}
+a.dropdown-item:hover {
+    background-color: #AACD6E;
 }

@@ -16,9 +16,9 @@ class Rating(db.Model):
     __tablename__ = 'ratings'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(Integer, ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(Integer, ForeignKey('user.id'))
     user = relationship("User")
-    recipe_id = db.Column(Integer, ForeignKey('recipe.id'), nullable=False)
+    recipe_id = db.Column(Integer, ForeignKey('recipe.id'))
     recipe = relationship("Recipe")
     rating = db.Column(REAL)
 
