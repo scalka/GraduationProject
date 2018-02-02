@@ -11,27 +11,32 @@
 
                 </div>
                 <div class="col-sm ">
-                    <div class="row detail-banner">
+                    <div class="detail-banner">
                         <h1 class="white-h "> {{ recipe_details[0][1] }} </h1>
-                        <div class="col-sm">
-                            <img src= {{ url_for('static', filename='images/hat.png') }} alt="hat icon">
+                        <div class="row">
+                            <div class="col-sm">
+                                <img src= {{ url_for('static', filename='images/hat.png') }} alt="hat icon">
 
-                            <h5>Preparation time: {{ recipe_details[0][7] }}</h5>
-                        </div>
-                        <div class="col-sm">
-                            <img src= {{ url_for('static', filename='images/timer.png') }} alt="timer icon">
-                            <h5>Total time: {{ recipe_details[0][8] }} </h5>
-                        </div>
-                        <div class="col-sm">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon">
-                                    <h4>{{ recipe_details[0][9] }} / 5 </h4>
-                                    <h5>{{ recipe_details[0][10] }}</h5>
-                                </div>
-                                <div class="col-sm">
-                                    <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon" width="15px">
-                                    <h5>Rate this recipe</h5>
+                                <h5>Preparation time: {{ recipe_details[0][7] }}</h5>
+                            </div>
+                            <div class="col-sm">
+                                <img src= {{ url_for('static', filename='images/timer.png') }} alt="timer icon">
+                                <h5>Total time: {{ recipe_details[0][8] }} </h5>
+                            </div>
+                            <div class="col-sm">
+                                <div class="row ">
+                                    <div class="col-sm star">
+                                        <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon">
+
+                                    </div>
+                                    <div class="col-sm">
+                                        <h4><span>{{ recipe_details[0][9] }}</span> / 5 </h4>
+                                        <h5>{{ recipe_details[0][10] }}</h5>
+                                    </div>
+                                    <div class="col-sm">
+                                        <img src= {{ url_for('static', filename='images/star.png') }} alt="star icon" width="15px">
+                                        <h5>Rate this recipe</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -165,3 +165,29 @@ nav a {
     position: absolute;
     margin-left: -20px;
 }
+
+.star{
+    padding: 0;
+    margin: 0;
+}
+
+.star + .col-sm{
+    padding: 0;
+    margin: 0;
+}
+.star + .col-sm > h4 > span {
+    font-size: larger;
+}
+.star + .col-sm + .col-sm{
+    padding: 0 5px;
+    margin: 0;
+}
+.star + .col-sm + .col-sm:before {
+    content: "";
+    background: whitesmoke;
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    height: 50%;
+    width: 1px;
+}
