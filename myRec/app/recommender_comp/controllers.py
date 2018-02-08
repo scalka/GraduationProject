@@ -22,6 +22,7 @@ from app.recommender_comp.mf_recommender import mf_recommend
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 from app.recommender_comp.pop_recommender import pop_recommend
+from datetime import timedelta
 
 recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 
@@ -48,7 +49,6 @@ def index():
 
     #get categories
     categories = find_categories()
-    print(categories)
     return render_template('recom/results.html',
                            userId=user_id,
                            name=name,
@@ -63,19 +63,26 @@ def index():
                            )
 
 
-@recommender_mod.route('/category/<recipe_id>', methods=['POST', 'GET'])
+@recommender_mod.route('/<recipe_id>', methods=['POST', 'GET'])
 @login_required
+# Detail page
 def recipe_details(recipe_id):
     conn = engine.connect()
     # s = select(* from 'user').where('user.id' == user_id)
     r = conn.execute('select * from recipe where recipe.id == ' + recipe_id)
     r_tuple = r.fetchall()
-    recipe = r_tuple[0][0]
+    ratings_num = conn.execute('select count(rating) from ratings where recipe_id == ' + recipe_id)
+    ratings_num_tuple = ratings_num.fetchall()
+
+    prep_time = str(timedelta(minutes=r_tuple[0][7]))[:-3]
+    total_time = str(timedelta(minutes=r_tuple[0][8]))[:-3]
 
     if request.method == 'POST':
         rating = request.form.get('test_name')
         userId = current_user.get_id()
         recipeId = recipe_id
+        ratings_num = conn.execute('select count(rating) from ratings where recipe_id == ' + recipe_id)
+        ratings_num_tuple = ratings_num.fetchall()
         #q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
         #check = q.fetchall()
 
@@ -87,7 +94,10 @@ def recipe_details(recipe_id):
 
     conn.close()
     return render_template('recipe_detail.html',
-                           recipe_details = r_tuple
+                           recipe_details = r_tuple,
+                           ratings_num = ratings_num_tuple[0][0],
+                           prep_time = prep_time,
+                           total_time = total_time
                            )
 
 # @recommender_comp.route('/results', methods=['POST'])

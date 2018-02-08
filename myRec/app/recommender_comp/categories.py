@@ -13,10 +13,13 @@ def find_categories():
     recipes_df = pd.DataFrame(recipes)
     # Using the rs object, set the DataFrame's column names to the corresponding names of the table columns.
     recipes_df.columns = recipes_query.keys()
-    print(recipes_df.category.unique())
+    # get only unique values
     categories = recipes_df.category.unique()
+    # order categories alphabetically
+    categories = pd.np.sort(categories)
     # Close connection
     con.close()
+
     return categories
 
 def display_recipes_from_category(cat):
