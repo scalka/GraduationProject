@@ -44,7 +44,7 @@ def contentbased_tfidf_recommend(find_similar_to):
     tfidf_matrix.shape
     # Compute the cosine similarity matrix
     cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
-    # Construct a reverse map of indices and movie titles
+    # Construct a reverse map of indices and recipe titles
     indices = pd.Series(recipes.index, index=recipes['title']).drop_duplicates()
 
     return get_contentbased_recommendations(find_similar_to, recipes, indices, cosine_sim)

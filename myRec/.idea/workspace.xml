@@ -23,28 +23,28 @@
       <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/recommender_comp/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="71" column="44" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="44" />
+            <state relative-caret-position="765">
+              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="e#28#41#0" expanded="true" />
-                <marker date="1518447391124" expanded="true" signature="1282:1325" ph="select usern... user" />
-                <marker date="1518447391124" expanded="true" signature="1362:1417" ph="select recip... ratings" />
-                <marker date="1518447391124" expanded="true" signature="3356:3396" ph="select * fro... recipe" />
-                <marker date="1518447391124" expanded="true" signature="3470:3522" ph="select count... ratings" />
-                <marker date="1518447391124" expanded="true" signature="3470:3523" ph="select count... ratings" />
-                <marker date="1518447391124" expanded="true" signature="3890:3943" ph="select count... ratings" />
-                <marker date="1518447391124" expanded="true" signature="4036:4125" ph="select * fro... ratings" />
-                <marker date="1518447391124" expanded="true" signature="4277:4345" ph="insert into ratings... " />
+                <marker date="1518447920731" expanded="true" signature="1282:1325" ph="select usern... user" />
+                <marker date="1518447920731" expanded="true" signature="1377:1432" ph="select recip... ratings" />
+                <marker date="1518447920731" expanded="true" signature="3588:3628" ph="select * fro... recipe" />
+                <marker date="1518447920731" expanded="true" signature="3702:3754" ph="select count... ratings" />
+                <marker date="1518447920731" expanded="true" signature="3702:3755" ph="select count... ratings" />
+                <marker date="1518447920731" expanded="true" signature="4122:4175" ph="select count... ratings" />
+                <marker date="1518447920731" expanded="true" signature="4268:4357" ph="select * fro... ratings" />
+                <marker date="1518447920731" expanded="true" signature="4509:4577" ph="insert into ratings... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="results.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="results.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+            <state relative-caret-position="75">
+              <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -55,23 +55,23 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="26" column="110" lean-forward="false" selection-start-line="26" selection-start-column="110" selection-end-line="26" selection-end-column="110" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentbased_recommender.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="contentbased_recommender.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+            <state relative-caret-position="-225">
+              <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1518447328981" expanded="true" signature="644:664" ph="select * fro... recipe" />
-                <marker date="1518447328981" expanded="true" signature="644:665" ph="select * fro... recipe" />
-                <marker date="1518447328981" expanded="true" signature="5632:5676" ph="select title... recipe" />
+                <marker date="1518447932017" expanded="true" signature="644:664" ph="select * fro... recipe" />
+                <marker date="1518447932017" expanded="true" signature="644:665" ph="select * fro... recipe" />
+                <marker date="1518447932017" expanded="true" signature="5633:5677" ph="select title... recipe" />
               </folding>
             </state>
           </provider>
@@ -103,7 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>recommend(</find>
       <find>pandas</find>
       <find>recipes</find>
       <find>recipe</find>
@@ -130,8 +129,9 @@
       <find>find_categories</find>
       <find>print</find>
       <find>recommendations</find>
-      <find>contentbased_tfidf_recommend</find>
       <find>metada</find>
+      <find>form</find>
+      <find>contentbased_tfidf_recommend</find>
       <find>last_rated_title</find>
     </findStrings>
   </component>
@@ -180,11 +180,11 @@
         <option value="$PROJECT_DIR$/app/static/css/main.css" />
         <option value="$PROJECT_DIR$/app/auth_comp/models.py" />
         <option value="$PROJECT_DIR$/app/templates/recipe_detail.html" />
-        <option value="$PROJECT_DIR$/app/templates/layout.html" />
         <option value="$PROJECT_DIR$/app/recommender_comp/categories.py" />
-        <option value="$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py" />
-        <option value="$PROJECT_DIR$/app/recommender_comp/controllers.py" />
         <option value="$PROJECT_DIR$/app/templates/recom/results.html" />
+        <option value="$PROJECT_DIR$/app/templates/layout.html" />
+        <option value="$PROJECT_DIR$/app/recommender_comp/controllers.py" />
+        <option value="$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py" />
       </list>
     </option>
   </component>
@@ -761,14 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/pop_recommender.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -792,43 +784,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
+    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="77" column="5" lean-forward="false" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="75">
+          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1518447328981" expanded="true" signature="644:664" ph="select * fro... recipe" />
-            <marker date="1518447328981" expanded="true" signature="644:665" ph="select * fro... recipe" />
-            <marker date="1518447328981" expanded="true" signature="5632:5676" ph="select title... recipe" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="26" column="110" lean-forward="false" selection-start-line="26" selection-start-column="110" selection-end-line="26" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="71" column="44" lean-forward="false" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="44" />
+        <state relative-caret-position="765">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="e#28#41#0" expanded="true" />
-            <marker date="1518447391124" expanded="true" signature="1282:1325" ph="select usern... user" />
-            <marker date="1518447391124" expanded="true" signature="1362:1417" ph="select recip... ratings" />
-            <marker date="1518447391124" expanded="true" signature="3356:3396" ph="select * fro... recipe" />
-            <marker date="1518447391124" expanded="true" signature="3470:3522" ph="select count... ratings" />
-            <marker date="1518447391124" expanded="true" signature="3470:3523" ph="select count... ratings" />
-            <marker date="1518447391124" expanded="true" signature="3890:3943" ph="select count... ratings" />
-            <marker date="1518447391124" expanded="true" signature="4036:4125" ph="select * fro... ratings" />
-            <marker date="1518447391124" expanded="true" signature="4277:4345" ph="insert into ratings... " />
+            <marker date="1518447920731" expanded="true" signature="1282:1325" ph="select usern... user" />
+            <marker date="1518447920731" expanded="true" signature="1377:1432" ph="select recip... ratings" />
+            <marker date="1518447920731" expanded="true" signature="3588:3628" ph="select * fro... recipe" />
+            <marker date="1518447920731" expanded="true" signature="3702:3754" ph="select count... ratings" />
+            <marker date="1518447920731" expanded="true" signature="3702:3755" ph="select count... ratings" />
+            <marker date="1518447920731" expanded="true" signature="4122:4175" ph="select count... ratings" />
+            <marker date="1518447920731" expanded="true" signature="4268:4357" ph="select * fro... ratings" />
+            <marker date="1518447920731" expanded="true" signature="4509:4577" ph="insert into ratings... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
+    <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="52" column="50" lean-forward="false" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="50" />
+        <state relative-caret-position="-225">
+          <caret line="47" column="22" lean-forward="true" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1518447932017" expanded="true" signature="644:664" ph="select * fro... recipe" />
+            <marker date="1518447932017" expanded="true" signature="644:665" ph="select * fro... recipe" />
+            <marker date="1518447932017" expanded="true" signature="5633:5677" ph="select title... recipe" />
           </folding>
         </state>
       </provider>

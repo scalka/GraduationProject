@@ -33,34 +33,33 @@ def index():
     user_id = current_user.get_id()
     #Get user name
     conn = engine.connect()
-    n = conn.execute('select username from user where user.id == ' + user_id)
-
-    rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id)
-
+    n = conn.execute('select username from user where user.id == ' + user_id) # get user name
+    rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id) # rated_recipes by a user
     """The result of the query is being represented as a Python list of Python tuples [('Philip',)]
         The tuples contained in the list represent the rows returned by your query.
         Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
-    # get user name
-    name_tuple = n.fetchall()
+    name_tuple = n.fetchall() # get user name
     name = name_tuple[0][0]
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
-
     conn.close()
 
     last_rated_title5 = get_last_rated_recipe(rated_recipes, 5.0)
     last_rated_title4 = get_last_rated_recipe(rated_recipes, 4.0)
 
+    # Content based algorithms
+    # Term Frequency-Inverse Document Frequency (TF-IDF) in ingredients for recipe rated at 5.0
     recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title5)
+    # Metadata terms based on category, ingredients and description for recipe rated at 4.0
     metadata_recommend_recipes = metadata_recommend(last_rated_title4)
 
-    #matrix factorization recommendation
+    # Matrix factorization recommendation
     recommendation = mf_recommend(int(user_id)).head(10)
-    #popularity recommendation
-    popular_recipe = pop_recommend().head(10)
-    #print(popular_recipe[['title']])
 
-    #get categories
+    # Popularity recommendation
+    popular_recipe = pop_recommend().head(10)
+
+    # Get all categories from db
     categories = find_categories()
 
     return render_template('recom/results.html',
