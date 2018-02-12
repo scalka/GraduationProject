@@ -18,7 +18,7 @@ def fetch_data():
     # Open engine connection
     con = engine.connect()
     # Perform query: rs to get recipe data from database
-    recipe_query = con.execute('select * from recipe')
+    recipe_query = con.execute('select * from recipe ')
     # Save results of the query to list
     recipes = recipe_query.fetchall()
     # Close connection
@@ -28,8 +28,6 @@ def fetch_data():
     # Using the rs object, set the DataFrame's column names to the corresponding names of the table columns.
     recipes.columns = recipe_query.keys()
     return recipes
-
-
 
 # Term Frequency-Inverse Document Frequency (TF-IDF)
 def contentbased_tfidf_recommend(find_similar_to):
@@ -65,10 +63,10 @@ def metadata_recommend(find_similar_to):
         recipes[feature] = recipes[feature].apply(clean_data).str.strip().str.replace('(\W+)', ' ').str.replace('(\d+)', '')
     # Create a new metadata soup
     recipes['soup'] = recipes.apply(create_soup, axis=1)
-    # use CountVectorizer() instead of TF-IDF
+    # use CountVectorizer() instead of tf-idf
     count = CountVectorizer(stop_words='english')
     count_matrix = count.fit_transform(recipes['soup'])
-    # Compute the Cosine Similarity matrix based on the count_matrix
+    print(count_matrix.shape)
     cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
     # Reset index of your main DataFrame and construct reverse mapping as before
     indices = pd.Series(recipes.index, index=recipes['title']).drop_duplicates()
@@ -94,22 +92,26 @@ def clean_data(x):
         else:
             return ''
 
-# Function that takes in movie title as input and outputs most similar movies
+# Function that takes in recipe title as input and outputs most similar recipes
 def get_contentbased_recommendations(title, recipes, indices, cosine_sim):
-    # Get the index of the movie that matches the title
+    # Get the index of the recipe that matches the title
     idx = indices[title]
-    # Get the pairwsie similarity scores of all movies with that movie
+    # Get the pairwise similarity scores of all recipes with that recipe
     sim_scores = list(enumerate(cosine_sim[idx]))
-    # Sort the movies based on the similarity scores
+    # Sort the recipes based on the similarity scores
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    # Get the scores of the 10 most similar movies
+    # Get the scores of the 10 most similar recipes
     sim_scores = sim_scores[1:11]
-    # Get the movie indices
+    # Get the recipe indices
     recipe_indices = [i[0] for i in sim_scores]
-    # Return the top 10 most similar movies
-    print(recipes['title'].iloc[recipe_indices])
-    return recipes['title'].iloc[recipe_indices]
+    print(recipes['id'].iloc[recipe_indices].tolist())
+    # Return the top 10 most similar recipes
+    recipes_df = recipes.iloc[recipe_indices]
+
+    return recipes_df
 
 
-contentbased_tfidf_recommend('Maple Roast Turkey')
-metadata_recommend('Maple Roast Turkey')
+
+
+    #contentbased_tfidf_recommend('Maple Roast Turkey')
+#metadata_recommend('Maple Roast Turkey')

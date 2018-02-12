@@ -14,6 +14,7 @@ from sqlalchemy import literal_column, select
 from app import User, engine, app
 from app.pagination.Pagination import Pagination
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
+from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -34,18 +35,36 @@ def index():
     conn = engine.connect()
     #s = select(* from 'user').where('user.id' == user_id)
     n = conn.execute('select username from user where user.id == ' + user_id)
+
+    rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id)
+
     """The result of the query is being represented as a Python list of Python tuples [('Philip',)]
         The tuples contained in the list represent the rows returned by your query.
         Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
+    # get user name
     name_tuple = n.fetchall()
     name = name_tuple[0][0]
+    # get recently rated recipes to use in content based recommender
+    rated_recipes = rr.fetchall()
+    print(len(rated_recipes))
+    i = len(rated_recipes)
+    print('i ' + str(i))
+    # reversed loop from highest to lowest
+    for i in reversed(range(i)):
+        print('this is i ' + str(i))
+        if (rated_recipes[i][1] >= 4.0):
+            rq = conn.execute('select title from recipe where recipe.id == ' + str(rated_recipes[i][0]))
+            rec = rq.fetchone()
+            print(rec[0])
+            recommender_tfidf_recipes = contentbased_tfidf_recommend(rec[0])
+            break
 
     conn.close()
     #matrix factorization recommendation
-    recommendation = mf_recommend(int(user_id)).head(5)
+    recommendation = mf_recommend(int(user_id)).head(10)
     #popularity recommendation
-    popular_recipe = pop_recommend().head(5)
-    print(popular_recipe[['title']])
+    popular_recipe = pop_recommend().head(10)
+    #print(popular_recipe[['title']])
 
     #get categories
     categories = find_categories()
@@ -54,11 +73,7 @@ def index():
                            name=name,
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
-                           id=recommendation[['id']],
-                           title=recommendation[['title']],
-                           category=recommendation[['category']],
-                           photo_url=recommendation[['photo_url']],
-                           rating=recommendation[['rating']],
+                           recommender_tfidf_recipes=recommender_tfidf_recipes,
                            categories=categories
                            )
 
