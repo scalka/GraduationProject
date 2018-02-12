@@ -46,16 +46,16 @@ def index():
     name = name_tuple[0][0]
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
-    print(len(rated_recipes))
+
     i = len(rated_recipes)
-    print('i ' + str(i))
+
     # reversed loop from highest to lowest
     for i in reversed(range(i)):
-        print('this is i ' + str(i))
+
         if (rated_recipes[i][1] >= 4.0):
             rq = conn.execute('select title from recipe where recipe.id == ' + str(rated_recipes[i][0]))
             rec = rq.fetchone()
-            print(rec[0])
+            last_rated_title = rec[0]
             recommender_tfidf_recipes = contentbased_tfidf_recommend(rec[0])
             break
 
@@ -73,6 +73,7 @@ def index():
                            name=name,
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
+                           last_rated_title=last_rated_title,
                            recommender_tfidf_recipes=recommender_tfidf_recipes,
                            categories=categories
                            )

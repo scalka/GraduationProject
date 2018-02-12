@@ -34,6 +34,23 @@
             {% endfor %}
          </div>
 
+        <!-- Content based -->
+        <h3>Because you liked {{ last_rated_title }}: </h3>
+        <div class="row">
+            {% for key,value in recommender_tfidf_recipes.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+
+
         <!--Popular-->
         <h3>Popular recipes: </h3>
         <div class="row scrollmenu">
