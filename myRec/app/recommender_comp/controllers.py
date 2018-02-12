@@ -14,7 +14,7 @@ from sqlalchemy import literal_column, select
 from app import User, engine, app
 from app.pagination.Pagination import Pagination
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
-from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend
+from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, get_last_rated_recipe
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -33,7 +33,6 @@ def index():
     user_id = current_user.get_id()
     #Get user name
     conn = engine.connect()
-    #s = select(* from 'user').where('user.id' == user_id)
     n = conn.execute('select username from user where user.id == ' + user_id)
 
     rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id)
@@ -47,19 +46,14 @@ def index():
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
 
-    i = len(rated_recipes)
-
-    # reversed loop from highest to lowest
-    for i in reversed(range(i)):
-
-        if (rated_recipes[i][1] >= 4.0):
-            rq = conn.execute('select title from recipe where recipe.id == ' + str(rated_recipes[i][0]))
-            rec = rq.fetchone()
-            last_rated_title = rec[0]
-            recommender_tfidf_recipes = contentbased_tfidf_recommend(rec[0])
-            break
-
     conn.close()
+
+    last_rated_title5 = get_last_rated_recipe(rated_recipes, 5.0)
+    last_rated_title4 = get_last_rated_recipe(rated_recipes, 4.0)
+
+    recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title5)
+    metadata_recommend_recipes = metadata_recommend(last_rated_title4)
+
     #matrix factorization recommendation
     recommendation = mf_recommend(int(user_id)).head(10)
     #popularity recommendation
@@ -68,12 +62,15 @@ def index():
 
     #get categories
     categories = find_categories()
+
     return render_template('recom/results.html',
                            userId=user_id,
                            name=name,
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
-                           last_rated_title=last_rated_title,
+                           last_rated_title=last_rated_title5,
+                           last_rated_title2 = last_rated_title4,
+                           metadata_recommend_recipes = metadata_recommend_recipes,
                            recommender_tfidf_recipes=recommender_tfidf_recipes,
                            categories=categories
                            )

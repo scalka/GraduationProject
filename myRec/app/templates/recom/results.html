@@ -49,7 +49,21 @@
                 </div>
             {% endfor %}
          </div>
-
+        <!-- Content based with metadata-->
+        <h3>Because you liked {{ last_rated_title2 }}: </h3>
+        <div class="row">
+            {% for key,value in metadata_recommend_recipes.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
 
         <!--Popular-->
         <h3>Popular recipes: </h3>
@@ -67,25 +81,6 @@
             {% endfor %}
          </div>
     </div>
-
-
-
-<!--    Old table
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Rating</th>
-            </tr>
-            {% for key,value in recommendations.iterrows() %}
-            <tr>
-                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['title'] }}</option> </td>
-                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['category'] }}</option> </td>
-                <td> <option value="{{ recommendations[['recipes_id']] }}">{{ value['rating'] }}</option> </td>
-            </tr>
-            {% endfor %}
-        </table>-->
-
 
     </div>
 {% endblock %}

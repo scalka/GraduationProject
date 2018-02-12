@@ -49,11 +49,17 @@ def contentbased_tfidf_recommend(find_similar_to):
 
     return get_contentbased_recommendations(find_similar_to, recipes, indices, cosine_sim)
 
+cur_dir = os.path.dirname(__file__)
 def metadata_recommend(find_similar_to):
     recipes = fetch_data()
     # data with description column
-    description = pd.read_csv('datasets/data_description.csv', sep=",",
-                              error_bad_lines=False, encoding="latin-1")
+    #description = pd.read_csv('datasets/data_description.csv', sep=",",
+      #                        error_bad_lines=False, encoding="latin-1")
+
+    description = pd.read_csv(os.path.join(cur_dir,
+                     'datasets',
+                     'data_description.csv'), sep=",", error_bad_lines=False, encoding="latin-1")
+
     # merge recipes with description
     recipes = pd.merge(recipes, description.iloc[:, [0, 4]], how='left', on='id')
     # metadata to be used to describe recipe
@@ -110,8 +116,20 @@ def get_contentbased_recommendations(title, recipes, indices, cosine_sim):
 
     return recipes_df
 
+def get_last_rated_recipe(rated_recipes, rating):
+    i = len(rated_recipes)
+    con = engine.connect()
+    last_rated_t = 0
+    # reversed loop from highest to lowest
+    for i in reversed(range(i)):
+        if (rated_recipes[i][1] >= rating):
+            rq = con.execute('select title from recipe where recipe.id == ' + str(rated_recipes[i][0]))
+            rec = rq.fetchone()
+            last_rated_t= rec[0]
+            break
+    con.close()
+    return last_rated_t
 
 
-
-    #contentbased_tfidf_recommend('Maple Roast Turkey')
+#contentbased_tfidf_recommend('Maple Roast Turkey')
 #metadata_recommend('Maple Roast Turkey')
