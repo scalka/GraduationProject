@@ -17,28 +17,31 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          {% if current_user.is_anonymous %}
           <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('auth.login') }}"> Login <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('auth.register') }}"> Register</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{{ url_for('recommender_comp.index') }}">Recommendations </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('recommender_comp.index') }}"> Recommendations </a>
-            </div>
-          </li>
+          {% endif %}
           {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('recommender_comp.index') }}">Recommendations </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('recommender_comp.cookbook') }}">Cookbook </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('auth.logout') }}"> Logout</a>
           </li>
-          {% endif %}
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
         </form>
+        {% endif %}
+
       </div>
     </nav>
 

@@ -14,7 +14,8 @@ from sqlalchemy import literal_column, select
 from app import User, engine, app
 from app.pagination.Pagination import Pagination
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
-from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, get_last_rated_recipe
+from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, \
+    get_last_rated_recipe, get_all_rated_recipe
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -31,10 +32,9 @@ recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 @login_required
 def index():
     user_id = current_user.get_id()
-    #Get user name
     conn = engine.connect()
-    n = conn.execute('select username from user where user.id == ' + user_id) # get user name
-    rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id) # rated_recipes by a user
+    n = conn.execute('select username from user where user.id == ' + user_id)  # get user name
+    rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id)  # rated_recipes by a user
     """The result of the query is being represented as a Python list of Python tuples [('Philip',)]
         The tuples contained in the list represent the rows returned by your query.
         Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
@@ -75,6 +75,28 @@ def index():
                            )
 
 
+@recommender_mod.route('/cookbook')
+@login_required
+def cookbook():
+    user_id = current_user.get_id()
+    conn = engine.connect()
+    #rrr = conn.execute('select * from recipes where id in ( select recipe_id from ratings where user_id == ' + user_id)
+
+    rr = conn.execute('SELECT * from recipe where recipe.id in ( select recipe_id from ratings where user_id == ? )', (user_id,))
+    # get recently rated recipes to use in content based recommender
+    rated_recipes = rr.fetchall()
+    conn.close()
+
+    rated_recipes_df = pd.DataFrame(rated_recipes)
+    rated_recipes_df.columns = rr.keys()
+
+    print(rated_recipes_df)
+
+    return render_template('recom/cookbook.html',
+                           rated_recipes = rated_recipes_df
+                           )
+
+
 @recommender_mod.route('/<recipe_id>', methods=['POST', 'GET'])
 @login_required
 # Detail page
@@ -111,26 +133,6 @@ def recipe_details(recipe_id):
                            prep_time = prep_time,
                            total_time = total_time
                            )
-
-# @recommender_comp.route('/results', methods=['POST'])
-# @login_required
-# def results():
-#     form = ReviewForm(request.form)
-#     if request.method == 'POST':
-#         user_id = current_user.get_id()
-#         recommendation = recommend(int(user_id)).head(10)
-#         print(recommendation)
-#         return render_template('recom/results.html',
-#                                userId=user_id,
-#                                recommendations=recommendation,
-#                                id=recommendation[['id']],
-#                                title=recommendation[['title']],
-#                                category=recommendation[['category']],
-#                                photo_utl=[['photo_utl']],
-#                                rating=recommendation[['rating']],
-#                                )
-
-
 
 @recommender_mod.route('/category/<category>/', defaults={'page': 1})
 @recommender_mod.route('/category/<category>/<int:page>')

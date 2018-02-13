@@ -130,6 +130,19 @@ def get_last_rated_recipe(rated_recipes, rating):
     con.close()
     return last_rated_t
 
+def get_all_rated_recipe(rated_recipes):
+    i = len(rated_recipes)
+    con = engine.connect()
+    # reversed loop from highest to lowest
+    for i in reversed(range(i)):
+        rq = con.execute('select * from recipe where recipe.id == ' + str(rated_recipes[i][0]))
+        rec = rq.fetchall()
+        recipes = pd.DataFrame(rec, dtype='str' )
+        break
+    con.close()
+    print(recipes)
+    return recipes
+
 
 #contentbased_tfidf_recommend('Maple Roast Turkey')
 #metadata_recommend('Maple Roast Turkey')

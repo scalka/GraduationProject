@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="cookbook content">
+        <h2>Cookbook</h2>
+        <h3>Bookmarked recipes: </h3>
+
+        <h3>Recently rated recipes: </h3>
+
+        <div class="container recipe_cont">
+        <!--Recently rated recipes-->
+        <h3>Recently rated recipes: </h3>
+        <div class="row">
+            {% for key,value in rated_recipes.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+    </div>
+{% endblock %}
