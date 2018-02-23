@@ -13,33 +13,29 @@
     <SUITE FILE_PATH="coverage/myRec$categories.coverage" NAME="categories Coverage Results" MODIFIED="1516963457787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$mf_recommender.coverage" NAME="mf_recommender Coverage Results" MODIFIED="1515331510050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$pop_recommender.coverage" NAME="pop_recommender Coverage Results" MODIFIED="1512234861378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_mod" />
-    <SUITE FILE_PATH="coverage/myRec$run.coverage" NAME="run Coverage Results" MODIFIED="1518541347860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myRec$run.coverage" NAME="run Coverage Results" MODIFIED="1519389871176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/myRec$generate_model.coverage" NAME="generate_model Coverage Results" MODIFIED="1515331764741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp/matrix_factorisation" />
     <SUITE FILE_PATH="coverage/myRec$contentbased_recommender.coverage" NAME="contentbased_recommender Coverage Results" MODIFIED="1518434504251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$controllers.coverage" NAME="controllers Coverage Results" MODIFIED="1518434963074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7409896">
+    <splitter split-orientation="horizontal" split-proportion="0.52905196">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="controllers.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/recommender_comp/controllers.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="430">
                   <caret line="95" column="59" lean-forward="false" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
                   <folding>
                     <element signature="e#28#41#0" expanded="true" />
-                    <marker date="1518541696305" expanded="true" signature="1291:1334" ph="select usern... user" />
-                    <marker date="1518541696305" expanded="true" signature="1387:1442" ph="select recip... ratings" />
-                    <marker date="1518541696305" expanded="true" signature="3521:3604" ph="select * fro... recipes" />
-                    <marker date="1518541696305" expanded="true" signature="3521:3616" ph="select * fro... recipes" />
-                    <marker date="1518541696305" expanded="true" signature="3641:3733" ph="SELECT * fro... recipe" />
-                    <marker date="1518541696305" expanded="true" signature="4367:4407" ph="select * fro... recipe" />
-                    <marker date="1518541696305" expanded="true" signature="4481:4533" ph="select count... ratings" />
-                    <marker date="1518541696305" expanded="true" signature="4481:4534" ph="select count... ratings" />
-                    <marker date="1518541696305" expanded="true" signature="4901:4954" ph="select count... ratings" />
-                    <marker date="1518541696305" expanded="true" signature="5047:5136" ph="select * fro... ratings" />
-                    <marker date="1518541696305" expanded="true" signature="5288:5356" ph="insert into ratings... " />
+                    <marker date="1519389836325" expanded="true" signature="1291:1334" ph="select usern... user" />
+                    <marker date="1519389836325" expanded="true" signature="1387:1442" ph="select recip... ratings" />
+                    <marker date="1519389836325" expanded="true" signature="3641:3733" ph="SELECT * fro... recipe" />
+                    <marker date="1519389836325" expanded="true" signature="4367:4407" ph="select * fro... recipe" />
+                    <marker date="1519389836325" expanded="true" signature="4481:4534" ph="select count... ratings" />
+                    <marker date="1519389836325" expanded="true" signature="4901:4954" ph="select count... ratings" />
+                    <marker date="1519389836325" expanded="true" signature="5288:5356" ph="insert into ratings... " />
                   </folding>
                 </state>
               </provider>
@@ -68,28 +64,23 @@
           <file leaf-file-name="contentbased_recommender.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
+                <state relative-caret-position="2431">
                   <caret line="143" column="18" lean-forward="true" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
-                    <marker date="1518537443194" expanded="true" signature="644:664" ph="select * fro... recipe" />
-                    <marker date="1518537443194" expanded="true" signature="644:665" ph="select * fro... recipe" />
-                    <marker date="1518537443194" expanded="true" signature="5633:5677" ph="select title... recipe" />
-                    <marker date="1518537443194" expanded="true" signature="6028:6068" ph="select * fro... recipe" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mf_recommender.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="mf_recommender.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/recommender_comp/mf_recommender.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="37" />
+                <state relative-caret-position="308">
+                  <caret line="49" column="4" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
                   <folding>
                     <element signature="e#27#36#0" expanded="true" />
-                    <marker date="1512906851243" expanded="true" signature="992:1012" ph="select * fro... recipe" />
-                    <marker date="1512906851243" expanded="true" signature="1049:1070" ph="select * fro... ratings" />
+                    <marker date="1519390111999" expanded="true" signature="992:1012" ph="select * fro... recipe" />
                   </folding>
                 </state>
               </provider>
@@ -98,15 +89,35 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="results.html" pinned="false" current-in-tab="true">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="_formhelpers.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/templates/_formhelpers.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="results.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -179,15 +190,12 @@
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/app/templates/recom/reviewform.html" />
         <option value="$PROJECT_DIR$/app/templates/index.html" />
-        <option value="$PROJECT_DIR$/app/templates/auth/login.html" />
-        <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
         <option value="$PROJECT_DIR$/app/controllers.py" />
         <option value="$PROJECT_DIR$/app/recommender_mod/recommender.py" />
         <option value="$PROJECT_DIR$/app/recommender_mod/mf_recommender.py" />
         <option value="$PROJECT_DIR$/app/mod_auth/models.py" />
         <option value="$PROJECT_DIR$/app/recommender_mod/pop_recommender.py" />
         <option value="$PROJECT_DIR$/app/recommender_mod/controllers.py" />
-        <option value="$PROJECT_DIR$/app/recommender_comp/mf_recommender.py" />
         <option value="$PROJECT_DIR$/app/recommender_comp/matrix_factorisation/generate_model.py" />
         <option value="$PROJECT_DIR$/app/recommender_comp/matrix_factorisation/new_allrecipes.csv" />
         <option value="$PROJECT_DIR$/app/recommender_comp/matrix_factorisation/new_rating_data.csv" />
@@ -208,6 +216,10 @@
         <option value="$PROJECT_DIR$/app/templates/recom/cookbook.html" />
         <option value="$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py" />
         <option value="$PROJECT_DIR$/app/recommender_comp/controllers.py" />
+        <option value="$PROJECT_DIR$/app/templates/_formhelpers.html" />
+        <option value="$PROJECT_DIR$/app/templates/auth/register.html" />
+        <option value="$PROJECT_DIR$/app/templates/auth/login.html" />
+        <option value="$PROJECT_DIR$/app/recommender_comp/mf_recommender.py" />
       </list>
     </option>
   </component>
@@ -218,9 +230,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1072" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -237,7 +250,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,6 +299,13 @@
               <item name="myRec" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myRec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myRec" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="recom" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -294,6 +313,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -467,17 +487,18 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12739871" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Kite Autosearch" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26435536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26435536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12846482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -513,13 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="1137" column="8" lean-forward="false" selection-start-line="1137" selection-start-column="8" selection-end-line="1137" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/_formhelpers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -646,23 +660,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="30" column="12" lean-forward="false" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/images/cooking.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/wtforms/ext/django/templatetags/wtforms.py">
@@ -803,16 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/recom/cookbook.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -823,26 +813,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="2431">
           <caret line="143" column="18" lean-forward="true" selection-start-line="143" selection-start-column="18" selection-end-line="143" selection-end-column="18" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1518537443194" expanded="true" signature="644:664" ph="select * fro... recipe" />
-            <marker date="1518537443194" expanded="true" signature="644:665" ph="select * fro... recipe" />
-            <marker date="1518537443194" expanded="true" signature="5633:5677" ph="select title... recipe" />
-            <marker date="1518537443194" expanded="true" signature="6028:6068" ph="select * fro... recipe" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/recommender_comp/mf_recommender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="37" />
-          <folding>
-            <element signature="e#27#36#0" expanded="true" />
-            <marker date="1512906851243" expanded="true" signature="992:1012" ph="select * fro... recipe" />
-            <marker date="1512906851243" expanded="true" signature="1049:1070" ph="select * fro... ratings" />
           </folding>
         </state>
       </provider>
@@ -853,17 +827,58 @@
           <caret line="95" column="59" lean-forward="false" selection-start-line="95" selection-start-column="59" selection-end-line="95" selection-end-column="59" />
           <folding>
             <element signature="e#28#41#0" expanded="true" />
-            <marker date="1518541696305" expanded="true" signature="1291:1334" ph="select usern... user" />
-            <marker date="1518541696305" expanded="true" signature="1387:1442" ph="select recip... ratings" />
-            <marker date="1518541696305" expanded="true" signature="3521:3604" ph="select * fro... recipes" />
-            <marker date="1518541696305" expanded="true" signature="3521:3616" ph="select * fro... recipes" />
-            <marker date="1518541696305" expanded="true" signature="3641:3733" ph="SELECT * fro... recipe" />
-            <marker date="1518541696305" expanded="true" signature="4367:4407" ph="select * fro... recipe" />
-            <marker date="1518541696305" expanded="true" signature="4481:4533" ph="select count... ratings" />
-            <marker date="1518541696305" expanded="true" signature="4481:4534" ph="select count... ratings" />
-            <marker date="1518541696305" expanded="true" signature="4901:4954" ph="select count... ratings" />
-            <marker date="1518541696305" expanded="true" signature="5047:5136" ph="select * fro... ratings" />
-            <marker date="1518541696305" expanded="true" signature="5288:5356" ph="insert into ratings... " />
+            <marker date="1519389836325" expanded="true" signature="1291:1334" ph="select usern... user" />
+            <marker date="1519389836325" expanded="true" signature="1387:1442" ph="select recip... ratings" />
+            <marker date="1519389836325" expanded="true" signature="3641:3733" ph="SELECT * fro... recipe" />
+            <marker date="1519389836325" expanded="true" signature="4367:4407" ph="select * fro... recipe" />
+            <marker date="1519389836325" expanded="true" signature="4481:4534" ph="select count... ratings" />
+            <marker date="1519389836325" expanded="true" signature="4901:4954" ph="select count... ratings" />
+            <marker date="1519389836325" expanded="true" signature="5288:5356" ph="insert into ratings... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/_formhelpers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="63" lean-forward="false" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/auth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/recommender_comp/mf_recommender.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="49" column="4" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+          <folding>
+            <element signature="e#27#36#0" expanded="true" />
+            <marker date="1519390111999" expanded="true" signature="992:1012" ph="select * fro... recipe" />
           </folding>
         </state>
       </provider>

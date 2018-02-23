@@ -38,8 +38,7 @@ def mf_recommend(user_id):
     recipes_df.columns = recipe_query.keys()
     #recipes_df = recipes_df.rename(columns={'id': 'recipe_id'})
     #ratings_df.columns = ratings_query.keys()
-    #print head
-    recipes_df.head()
+
     #ratings_df.head()
     #check for already reviewed recipes
     #reviewed_recipes_df = ratings_df[ratings_df['user_id'] == user_id]
