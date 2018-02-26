@@ -159,8 +159,14 @@ def bookmark(recipe_id):
   userId = current_user.get_id()
   recipeId = recipe_id
   date = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+  c = conn.execute('select * from bookmarks where user_id == ' + userId + ' and recipe_id == ' + recipeId)
+  cursor = c.fetchall()
+  print(cursor)
+  if len(cursor) < 1:
+    conn.execute('insert into bookmarks (user_id, recipe_id, date) values (? , ? , ? )', (userId, recipeId, date, ))
+  else:
+    conn.execute('delete from bookmarks where user_id == ' + userId + ' and recipe_id == ' + recipeId)
 
-  conn.execute('insert into bookmarks (user_id, recipe_id, date) values (? , ? , ? )', (userId, recipeId, date, ))
   conn.close()
   return redirect(url_for('recommender_comp.recipe_details', recipe_id = recipe_id))
 
