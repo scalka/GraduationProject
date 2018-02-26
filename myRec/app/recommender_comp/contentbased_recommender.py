@@ -130,6 +130,20 @@ def get_last_rated_recipe(rated_recipes, rating):
     con.close()
     return last_rated_t
 
+def get_last_bookmarked(bookmarked):
+    i = len(bookmarked)
+    con = engine.connect()
+    last_bookmarked = 0
+    # reversed loop from highest to lowest
+    for i in reversed(range(i)):
+          print(str(bookmarked[i][0]))
+          rq = con.execute('select title from recipe where recipe.id == ' + str(bookmarked[i][0]))
+          rec = rq.fetchone()
+          last_bookmarked= rec[0]
+          break
+    con.close()
+    return last_bookmarked
+
 def get_all_rated_recipe(rated_recipes):
     i = len(rated_recipes)
     con = engine.connect()

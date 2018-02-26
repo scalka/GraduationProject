@@ -15,7 +15,7 @@ from app import User, engine, app
 from app.pagination.Pagination import Pagination
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
 from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, \
-    get_last_rated_recipe, get_all_rated_recipe
+  get_last_rated_recipe, get_all_rated_recipe, get_last_bookmarked
 from app.recommender_comp.forms import ReviewForm
 
 # Import module models (i.e. User)
@@ -35,6 +35,7 @@ def index():
     conn = engine.connect()
     n = conn.execute('select username from user where user.id == ' + user_id)  # get user name
     rr = conn.execute('select recipe_id, rating from ratings where user_id == ' + user_id)  # rated_recipes by a user
+    bm = conn.execute('SELECT * from recipe where recipe.id in ( SELECT recipe_id from bookmarks where user_id == ? )', (user_id,)) # bookmarked recipes by a user
     """The result of the query is being represented as a Python list of Python tuples [('Philip',)]
         The tuples contained in the list represent the rows returned by your query.
         Each value contained in a tuple represents the corresponding field, of that specific row, in the order you selected it"""
@@ -42,16 +43,17 @@ def index():
     name = name_tuple[0][0]
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
+    bookmarked_recipes = bm.fetchall()
     conn.close()
 
-    last_rated_title5 = get_last_rated_recipe(rated_recipes, 5.0)
-    last_rated_title4 = get_last_rated_recipe(rated_recipes, 4.0)
-
+    last_rated_title5 = get_last_rated_recipe(rated_recipes, 4.0)
+    last_bookmarked = get_last_bookmarked(bookmarked_recipes)
+    print(last_bookmarked)
     # Content based algorithms
     # Term Frequency-Inverse Document Frequency (TF-IDF) in ingredients for recipe rated at 5.0
     recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title5)
     # Metadata terms based on category, ingredients and description for recipe rated at 4.0
-    metadata_recommend_recipes = metadata_recommend(last_rated_title4)
+    metadata_recommend_recipes = metadata_recommend(last_bookmarked)
 
     # Matrix factorization recommendation
     recommendation = mf_recommend(int(user_id)).head(10)
@@ -67,8 +69,8 @@ def index():
                            name=name,
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
+                           last_bookmarked = last_bookmarked,
                            last_rated_title=last_rated_title5,
-                           last_rated_title2 = last_rated_title4,
                            metadata_recommend_recipes = metadata_recommend_recipes,
                            recommender_tfidf_recipes=recommender_tfidf_recipes,
                            categories=categories
@@ -84,19 +86,18 @@ def cookbook():
     rr = conn.execute('SELECT * from recipe where recipe.id in ( select recipe_id from ratings where user_id == ? )', (user_id,))
     bm = conn.execute('SELECT * from recipe where recipe.id in ( SELECT recipe_id from bookmarks where user_id == ? )', (user_id,))
 
-    b = conn.execute('SELECT recipe_id from bookmarks where user_id == ' + user_id)
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
     bookmarked = bm.fetchall()
     conn.close()
-    print(bookmarked)
+    #print(bookmarked)
     rated_recipes_df = pd.DataFrame(rated_recipes)
     rated_recipes_df.columns = rr.keys()
 
     bookmarked_df = pd.DataFrame(bookmarked)
     bookmarked_df.columns = bm.keys()
 
-    print(bookmarked_df)
+    #print(bookmarked_df)
 
     return render_template('recom/cookbook.html',
                            rated_recipes = rated_recipes_df,
