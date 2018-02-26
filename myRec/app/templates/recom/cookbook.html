@@ -5,6 +5,9 @@
         <div class="container recipe_cont">
         <!--Recently rated recipes-->
         <h3>Recently rated recipes: </h3>
+          {% if (no_rated_msg) %}
+          <h1>You have no rated recipes</h1>
+          {% endif %}
         <div class="row">
             {% for key,value in rated_recipes.iterrows() %}
                 <div class="col-xs-4">
@@ -20,6 +23,9 @@
          </div>
           <!--Bookmarked recipes-->
         <h3>Bookmarked recipes: </h3>
+          {% if (no_bookmarks_msg) %}
+          <h1>You have no bookmarked recipes</h1>
+          {% endif %}
         <div class="row">
             {% for key,value in bookmarked_recipes.iterrows() %}
                 <div class="col-xs-4">

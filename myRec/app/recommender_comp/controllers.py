@@ -1,25 +1,16 @@
 # Import flask dependencies
-import pickle
 import pandas as pd
-import os
 from flask import Blueprint, request, render_template, \
-                  flash, g, session, redirect, url_for
-
+                  redirect, url_for
 # Import the database object from the main app module
 from flask_login import login_required, current_user
 
-# Import module forms
-from sqlalchemy import literal_column, select
-
-from app import User, engine, app
-from app.pagination.Pagination import Pagination
+from app import engine
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
 from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, \
-  get_last_rated_recipe, get_all_rated_recipe, get_last_bookmarked
-from app.recommender_comp.forms import ReviewForm
+  get_last_rated_recipe, get_last_bookmarked
 
 # Import module models (i.e. User)
-#from app.recommender_comp.recommender import recommend
 from app.recommender_comp.mf_recommender import mf_recommend
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
@@ -28,7 +19,7 @@ from datetime import timedelta, datetime
 
 recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 
-@recommender_mod.route('/reviewform')
+@recommender_mod.route('/')
 @login_required
 def index():
     user_id = current_user.get_id()
@@ -48,15 +39,19 @@ def index():
 
     last_rated_title5 = get_last_rated_recipe(rated_recipes, 4.0)
     last_bookmarked = get_last_bookmarked(bookmarked_recipes)
-    print(last_bookmarked)
+    #print(last_bookmarked)
     # Content based algorithms
     # Term Frequency-Inverse Document Frequency (TF-IDF) in ingredients for recipe rated at 5.0
     recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title5)
     # Metadata terms based on category, ingredients and description for recipe rated at 4.0
     metadata_recommend_recipes = metadata_recommend(last_bookmarked)
-
-    # Matrix factorization recommendation
-    recommendation = mf_recommend(int(user_id)).head(10)
+    print(user_id)
+    recommendation = pd.DataFrame()
+    no_mf_msg = True
+    if(int(user_id) <= 942):
+      no_mf_msg = False
+      # Matrix factorization recommendation
+      recommendation = mf_recommend(int(user_id)).head(10)
 
     # Popularity recommendation
     popular_recipe = pop_recommend().head(10)
@@ -73,7 +68,8 @@ def index():
                            last_rated_title=last_rated_title5,
                            metadata_recommend_recipes = metadata_recommend_recipes,
                            recommender_tfidf_recipes=recommender_tfidf_recipes,
-                           categories=categories
+                           categories=categories,
+                           no_mf_msg=no_mf_msg
                            )
 
 @recommender_mod.route('/cookbook')
@@ -91,17 +87,29 @@ def cookbook():
     bookmarked = bm.fetchall()
     conn.close()
     #print(bookmarked)
-    rated_recipes_df = pd.DataFrame(rated_recipes)
-    rated_recipes_df.columns = rr.keys()
+    no_rated_msg = True
+    rated_recipes_df = pd.DataFrame()
+    if len(rated_recipes) > 0:
+      no_rated_msg = False
+      rated_recipes_df = pd.DataFrame(rated_recipes)
+      rated_recipes_df.columns = rr.keys()
 
-    bookmarked_df = pd.DataFrame(bookmarked)
-    bookmarked_df.columns = bm.keys()
+    bookmarked_df = pd.DataFrame()
+    no_bookmarks_msg = True
+    #print(bookmarked_df)
+    if len(bookmarked) > 0:
+      no_bookmarks_msg = False
+      bookmarked_df = pd.DataFrame(bookmarked)
+      bookmarked_df.columns = bm.keys()
+
 
     #print(bookmarked_df)
 
     return render_template('recom/cookbook.html',
                            rated_recipes = rated_recipes_df,
-                           bookmarked_recipes = bookmarked_df
+                           bookmarked_recipes = bookmarked_df,
+                           no_bookmarks_msg = no_bookmarks_msg,
+                           no_rated_msg = no_rated_msg
                            )
 
 
@@ -137,7 +145,6 @@ def recipe_details(recipe_id):
         q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
         check = q.fetchall()
         if len(check) < 1:
-           print("update")
            conn.execute('insert into ratings (user_id, recipe_id, rating) values (? , ? , ? )',
                         (userId, recipeId, rating,))
         else:

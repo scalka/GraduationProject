@@ -20,6 +20,9 @@
     <div class="container recipe_cont">
         <!--Matrix factorisation-->
         <h3>Users like you also liked: </h3>
+        {% if (no_mf_msg) %}
+        <p>We are collecting data to generate personalised recipes for you based on your likes</p>
+        {% else %}
         <div class="row">
             {% for key,value in recommendations.iterrows() %}
                 <div class="col-xs-4">
@@ -33,6 +36,7 @@
                 </div>
             {% endfor %}
          </div>
+        {% endif %}
 
         <!-- Content based -->
         <h3>Because you liked {{ last_rated_title }}: </h3>
