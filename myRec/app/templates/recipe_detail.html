@@ -9,9 +9,15 @@
                 </div>
 
                 <div class="col-sm ">
+
                   <a id="mark" href="{{ url_for('recommender_comp.bookmark', recipe_id=recipe_details[0][0]) }}">
+                    {% if (show_bookmark ) %}
+                    <div id="bookmarks-green" class="float-right"></div>
+                    {% else %}
                     <div id="bookmarks" class="float-right"></div>
+                    {% endif %}
                   </a>
+
                     <div class="detail-banner">
                         <h1 class="white-h "> {{ recipe_details[0][1] }} </h1>
                         <div class="row">

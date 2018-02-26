@@ -100,12 +100,21 @@ def cookbook():
 @login_required
 # Detail page
 def recipe_details(recipe_id):
+    user_id = current_user.get_id()
     conn = engine.connect()
     # s = select(* from 'user').where('user.id' == user_id)
     r = conn.execute('select * from recipe where recipe.id == ' + recipe_id)
     r_tuple = r.fetchall()
     ratings_num = conn.execute('select count(rating) from ratings where recipe_id == ' + recipe_id)
     ratings_num_tuple = ratings_num.fetchall()
+
+    b = conn.execute('SELECT recipe_id from bookmarks where user_id == ' + user_id + ' and recipe_id == ' + recipe_id)
+    bookmarked = b.fetchall()
+
+    if len(bookmarked) < 1:
+      show_bookmark = False;
+    else:
+      show_bookmark = True;
 
     prep_time = str(timedelta(minutes=r_tuple[0][7]))[:-3]
     total_time = str(timedelta(minutes=r_tuple[0][8]))[:-3]
@@ -129,7 +138,8 @@ def recipe_details(recipe_id):
                            recipe_details = r_tuple,
                            ratings_num = ratings_num_tuple[0][0],
                            prep_time = prep_time,
-                           total_time = total_time
+                           total_time = total_time,
+                           show_bookmark= show_bookmark
                            )
 
 @recommender_mod.route('/<recipe_id>/m', methods=['POST', 'GET'])
@@ -140,11 +150,9 @@ def bookmark(recipe_id):
   userId = current_user.get_id()
   recipeId = recipe_id
   date = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+
   conn.execute('insert into bookmarks (user_id, recipe_id, date) values (? , ? , ? )', (userId, recipeId, date, ))
   conn.close()
-  print("bookmark")
-  print(1)
-  print(2)
   return redirect(url_for('recommender_comp.recipe_details', recipe_id = recipe_id))
 
 

@@ -233,7 +233,16 @@ a.dropdown-item:hover {
   margin-right: 10px;
 }
 
-.bookmarks-green {
-  border-left: 25px solid #AACD6E !important;
-  border-right: 25px solid #AACD6E !important;
+#bookmarks-green {
+  z-index: 1;
+  position: relative;
+  height: 70px;
+  width: 50px;
+  padding: 0px;
+  -webkit-transform: rotate(0deg) skew(0deg);
+  transform: rotate(0deg) skew(0deg);
+  border-left: 25px solid #AACD6E;
+  border-right: 25px solid #AACD6E;
+  border-bottom: 25px solid transparent;
+  margin-right: 10px;
 }
