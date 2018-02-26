@@ -37,17 +37,27 @@ def index():
     bookmarked_recipes = bm.fetchall()
     conn.close()
 
-    last_rated_title5 = get_last_rated_recipe(rated_recipes, 4.0)
+    last_rated_title = get_last_rated_recipe(rated_recipes, 4.0)
     last_bookmarked = get_last_bookmarked(bookmarked_recipes)
-    #print(last_bookmarked)
+
     # Content based algorithms
-    # Term Frequency-Inverse Document Frequency (TF-IDF) in ingredients for recipe rated at 5.0
-    recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title5)
+    no_rated_msg = True
+    recommender_tfidf_recipes = pd.DataFrame()
+    if(last_rated_title != 0):
+      # Term Frequency-Inverse Document Frequency (TF-IDF) in ingredients for recipe rated at 5.0
+      recommender_tfidf_recipes = contentbased_tfidf_recommend(last_rated_title)
+      no_rated_msg = False
+
     # Metadata terms based on category, ingredients and description for recipe rated at 4.0
-    metadata_recommend_recipes = metadata_recommend(last_bookmarked)
-    print(user_id)
+    no_bookmarked_msg = True
+    metadata_recommend_recipes = pd.DataFrame()
+    if (last_bookmarked != 0):
+      metadata_recommend_recipes = metadata_recommend(last_bookmarked)
+      no_bookmarked_msg = False
+
     recommendation = pd.DataFrame()
     no_mf_msg = True
+
     if(int(user_id) <= 942):
       no_mf_msg = False
       # Matrix factorization recommendation
@@ -65,11 +75,13 @@ def index():
                            popular_recipes=popular_recipe,
                            recommendations=recommendation,
                            last_bookmarked = last_bookmarked,
-                           last_rated_title=last_rated_title5,
+                           last_rated_title=last_rated_title,
                            metadata_recommend_recipes = metadata_recommend_recipes,
                            recommender_tfidf_recipes=recommender_tfidf_recipes,
                            categories=categories,
-                           no_mf_msg=no_mf_msg
+                           no_mf_msg=no_mf_msg,
+                           no_rated_msg=no_rated_msg,
+                           no_bookmarked_msg=no_bookmarked_msg
                            )
 
 @recommender_mod.route('/cookbook')
@@ -86,14 +98,15 @@ def cookbook():
     rated_recipes = rr.fetchall()
     bookmarked = bm.fetchall()
     conn.close()
-    #print(bookmarked)
+
+    # Rated recipes
     no_rated_msg = True
     rated_recipes_df = pd.DataFrame()
     if len(rated_recipes) > 0:
       no_rated_msg = False
       rated_recipes_df = pd.DataFrame(rated_recipes)
       rated_recipes_df.columns = rr.keys()
-
+    # Bookmarked recipes
     bookmarked_df = pd.DataFrame()
     no_bookmarks_msg = True
     #print(bookmarked_df)
@@ -102,8 +115,6 @@ def cookbook():
       bookmarked_df = pd.DataFrame(bookmarked)
       bookmarked_df.columns = bm.keys()
 
-
-    #print(bookmarked_df)
 
     return render_template('recom/cookbook.html',
                            rated_recipes = rated_recipes_df,

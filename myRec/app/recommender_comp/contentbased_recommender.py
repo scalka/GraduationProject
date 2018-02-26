@@ -72,7 +72,7 @@ def metadata_recommend(find_similar_to):
     # use CountVectorizer() instead of tf-idf
     count = CountVectorizer(stop_words='english')
     count_matrix = count.fit_transform(recipes['soup'])
-    print(count_matrix.shape)
+    #print(count_matrix.shape)
     cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
     # Reset index of your main DataFrame and construct reverse mapping as before
     indices = pd.Series(recipes.index, index=recipes['title']).drop_duplicates()
@@ -110,7 +110,7 @@ def get_contentbased_recommendations(title, recipes, indices, cosine_sim):
     sim_scores = sim_scores[1:11]
     # Get the recipe indices
     recipe_indices = [i[0] for i in sim_scores]
-    print(recipes['id'].iloc[recipe_indices].tolist())
+    #print(recipes['id'].iloc[recipe_indices].tolist())
     # Return the top 10 most similar recipes
     recipes_df = recipes.iloc[recipe_indices]
 
@@ -136,27 +136,13 @@ def get_last_bookmarked(bookmarked):
     last_bookmarked = 0
     # reversed loop from highest to lowest
     for i in reversed(range(i)):
-          print(str(bookmarked[i][0]))
+          #print(str(bookmarked[i][0]))
           rq = con.execute('select title from recipe where recipe.id == ' + str(bookmarked[i][0]))
           rec = rq.fetchone()
           last_bookmarked= rec[0]
           break
     con.close()
     return last_bookmarked
-
-def get_all_rated_recipe(rated_recipes):
-    i = len(rated_recipes)
-    con = engine.connect()
-    # reversed loop from highest to lowest
-    for i in reversed(range(i)):
-        rq = con.execute('select * from recipe where recipe.id == ' + str(rated_recipes[i][0]))
-        rec = rq.fetchall()
-        recipes = pd.DataFrame(rec, dtype='str' )
-        break
-    con.close()
-    print(recipes)
-    return recipes
-
 
 #contentbased_tfidf_recommend('Maple Roast Turkey')
 #metadata_recommend('Maple Roast Turkey')

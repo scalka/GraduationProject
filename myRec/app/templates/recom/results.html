@@ -39,6 +39,11 @@
         {% endif %}
 
         <!-- Content based -->
+
+        {% if (no_mf_msg) %}
+        <h3>Because you did not like any recipe: </h3>
+        <p>You need to rate recipes to see those recommendations</p>
+        {% else %}
         <h3>Because you liked {{ last_rated_title }}: </h3>
         <div class="row">
             {% for key,value in recommender_tfidf_recipes.iterrows() %}
@@ -53,7 +58,12 @@
                 </div>
             {% endfor %}
          </div>
+        {% endif %}
         <!-- Content based with metadata-->
+        {% if (no_bookmarked_msg) %}
+        <h3>Because you did not bookmark any recipe: </h3>
+        <p>You need to bookmark recipes to see those recommendations</p>
+        {% else %}
         <h3>Because you bookmarked {{ last_bookmarked }}: </h3>
         <div class="row">
             {% for key,value in metadata_recommend_recipes.iterrows() %}
@@ -68,7 +78,7 @@
                 </div>
             {% endfor %}
          </div>
-
+        {% endif %}
         <!--Popular-->
         <h3>Popular recipes: </h3>
         <div class="row scrollmenu">
