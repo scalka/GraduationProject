@@ -82,17 +82,25 @@ def cookbook():
     #rrr = conn.execute('select * from recipes where id in ( select recipe_id from ratings where user_id == ' + user_id)
 
     rr = conn.execute('SELECT * from recipe where recipe.id in ( select recipe_id from ratings where user_id == ? )', (user_id,))
+    bm = conn.execute('SELECT * from recipe where recipe.id in ( SELECT recipe_id from bookmarks where user_id == ? )', (user_id,))
+
+    b = conn.execute('SELECT recipe_id from bookmarks where user_id == ' + user_id)
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
+    bookmarked = bm.fetchall()
     conn.close()
-
+    print(bookmarked)
     rated_recipes_df = pd.DataFrame(rated_recipes)
     rated_recipes_df.columns = rr.keys()
 
-    print(rated_recipes_df)
+    bookmarked_df = pd.DataFrame(bookmarked)
+    bookmarked_df.columns = bm.keys()
+
+    print(bookmarked_df)
 
     return render_template('recom/cookbook.html',
-                           rated_recipes = rated_recipes_df
+                           rated_recipes = rated_recipes_df,
+                           bookmarked_recipes = bookmarked_df
                            )
 
 
