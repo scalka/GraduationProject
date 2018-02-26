@@ -1,16 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="main_paige content">
-
-
-
         <div class="container">
+
             <div class="row">
                 <div class="col-sm">
                     <img class="detail-img" src="{{ recipe_details[0][6] }}">
-
                 </div>
+
                 <div class="col-sm ">
+                  <a id="mark"><div id="bookmarks" class="float-right"></div></a>
                     <div class="detail-banner">
                         <h1 class="white-h "> {{ recipe_details[0][1] }} </h1>
                         <div class="row">
@@ -63,7 +62,7 @@
                             <h3 class="detail-desc"><span>CATEGORY</span> {{ recipe_details[0][2] }}</h3>
                         </div>
                         <div class="col-sm">
-                            <h3 class="detail-desc"><span>CALORIES</span> {{ recipe_details[0][11] }}<h3>
+                            <h3 class="detail-desc"><span>CALORIES</span> {{ recipe_details[0][11] }}</h3>
                         </div>
                     </div>
                     <div class="row">

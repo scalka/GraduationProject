@@ -22,6 +22,15 @@ class Rating(db.Model):
     recipe = relationship("Recipe")
     rating = db.Column(REAL)
 
+class Bookmark(db.Model):
+    __tablename__ = 'bookmarks'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(Integer, ForeignKey('user.id'))
+    user = relationship("User")
+    recipe_id = db.Column(Integer, ForeignKey('recipe.id'))
+    recipe = relationship("Recipe")
+    date = db.Column(db.Text)
 
 class User(db.Model):
     __tablename__ = 'user'

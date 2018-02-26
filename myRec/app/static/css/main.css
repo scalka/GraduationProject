@@ -213,3 +213,27 @@ nav a {
 a.dropdown-item:hover {
     background-color: #AACD6E;
 }
+
+*, *:before, *:after{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+#bookmarks{
+  z-index: 1;
+  position: relative;
+  height: 70px;
+  width: 50px;
+  padding: 0px;
+  -webkit-transform: rotate(0deg) skew(0deg);
+  transform: rotate(0deg) skew(0deg);
+  border-left: 25px solid #ffffff;
+  border-right: 25px solid #ffffff;
+  border-bottom: 25px solid transparent;
+  margin-right: 10px;
+}
+
+.bookmarks-green {
+  border-left: 25px solid #AACD6E !important;
+  border-right: 25px solid #AACD6E !important;
+}
