@@ -9,13 +9,14 @@
                 </div>
 
                 <div class="col-sm ">
-                  <a id="mark"><div id="bookmarks" class="float-right"></div></a>
+                  <a id="mark" href="{{ url_for('recommender_comp.bookmark', recipe_id=recipe_details[0][0]) }}">
+                    <div id="bookmarks" class="float-right"></div>
+                  </a>
                     <div class="detail-banner">
                         <h1 class="white-h "> {{ recipe_details[0][1] }} </h1>
                         <div class="row">
                             <div class="col-sm">
                                 <img src= {{ url_for('static', filename='images/hat.png') }} alt="hat icon">
-
                                 <h5>Preparation time: {{ prep_time }}</h5>
                             </div>
                             <div class="col-sm">
@@ -41,11 +42,11 @@
                                                 <div class="dropdown-menu">
                                                     <form action="{{ url_for('recommender_comp.recipe_details', recipe_id=recipe_details[0][0]) }}" method="POST">
 
-                                                        <input class="dropdown-item" type="submit" name="test_name" value="1"></input>
-                                                        <input class="dropdown-item" type="submit" name="test_name" value="2"></input>
-                                                        <input class="dropdown-item" type="submit" name="test_name" value="3"></input>
-                                                        <input class="dropdown-item" type="submit" name="test_name" value="4"></input>
-                                                        <input class="dropdown-item" type="submit" name="test_name" value="5"></input>
+                                                        <input class="dropdown-item" type="submit" name="rating_name" value="1"></input>
+                                                        <input class="dropdown-item" type="submit" name="rating_name" value="2"></input>
+                                                        <input class="dropdown-item" type="submit" name="rating_name" value="3"></input>
+                                                        <input class="dropdown-item" type="submit" name="rating_name" value="4"></input>
+                                                        <input class="dropdown-item" type="submit" name="rating_name" value="5"></input>
                                                     </form>
                                                 </div>
                                             </div>

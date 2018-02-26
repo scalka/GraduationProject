@@ -24,7 +24,7 @@ from app.recommender_comp.mf_recommender import mf_recommend
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 from app.recommender_comp.pop_recommender import pop_recommend
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 
@@ -74,7 +74,6 @@ def index():
                            categories=categories
                            )
 
-
 @recommender_mod.route('/cookbook')
 @login_required
 def cookbook():
@@ -112,14 +111,13 @@ def recipe_details(recipe_id):
     total_time = str(timedelta(minutes=r_tuple[0][8]))[:-3]
 
     if request.method == 'POST':
-        rating = request.form.get('test_name')
+        rating = request.form.get('rating_name')
         userId = current_user.get_id()
         recipeId = recipe_id
         ratings_num = conn.execute('select count(rating) from ratings where recipe_id == ' + recipe_id)
         ratings_num_tuple = ratings_num.fetchall()
         #q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
         #check = q.fetchall()
-
         #if :
         #    print("update")
        # else:
@@ -133,6 +131,22 @@ def recipe_details(recipe_id):
                            prep_time = prep_time,
                            total_time = total_time
                            )
+
+@recommender_mod.route('/<recipe_id>/m', methods=['POST', 'GET'])
+@login_required
+def bookmark(recipe_id):
+  conn = engine.connect()
+
+  userId = current_user.get_id()
+  recipeId = recipe_id
+  date = datetime.now().strftime("%I:%M%p on %B %d, %Y")
+  conn.execute('insert into bookmarks (user_id, recipe_id, date) values (? , ? , ? )', (userId, recipeId, date, ))
+  conn.close()
+  print("bookmark")
+  print(1)
+  print(2)
+  return redirect(url_for('recommender_comp.recipe_details', recipe_id = recipe_id))
+
 
 @recommender_mod.route('/category/<category>/', defaults={'page': 1})
 @recommender_mod.route('/category/<category>/<int:page>')
