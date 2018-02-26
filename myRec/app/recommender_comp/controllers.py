@@ -134,13 +134,16 @@ def recipe_details(recipe_id):
         recipeId = recipe_id
         ratings_num = conn.execute('select count(rating) from ratings where recipe_id == ' + recipe_id)
         ratings_num_tuple = ratings_num.fetchall()
-        #q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
-        #check = q.fetchall()
-        #if :
-        #    print("update")
-       # else:
-           # print("insert")
-        conn.execute('insert into ratings (user_id, recipe_id, rating) values (? , ? , ? )', (userId, recipeId, rating, ))
+        q = conn.execute('select * from ratings where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
+        check = q.fetchall()
+        if len(check) < 1:
+           print("update")
+           conn.execute('insert into ratings (user_id, recipe_id, rating) values (? , ? , ? )',
+                        (userId, recipeId, rating,))
+        else:
+          conn.execute('update ratings set rating == ' + rating +' where ratings.recipe_id == ' + recipeId + ' and ratings.user_id == ' + userId)
+
+        #conn.execute('insert into ratings (user_id, recipe_id, rating) values (? , ? , ? )', (userId, recipeId, rating, ))
 
     conn.close()
     return render_template('recipe_detail.html',
@@ -161,12 +164,11 @@ def bookmark(recipe_id):
   date = datetime.now().strftime("%I:%M%p on %B %d, %Y")
   c = conn.execute('select * from bookmarks where user_id == ' + userId + ' and recipe_id == ' + recipeId)
   cursor = c.fetchall()
-  print(cursor)
+  # if not bookmarked - do it, else delete bookmark
   if len(cursor) < 1:
     conn.execute('insert into bookmarks (user_id, recipe_id, date) values (? , ? , ? )', (userId, recipeId, date, ))
   else:
     conn.execute('delete from bookmarks where user_id == ' + userId + ' and recipe_id == ' + recipeId)
-
   conn.close()
   return redirect(url_for('recommender_comp.recipe_details', recipe_id = recipe_id))
 
