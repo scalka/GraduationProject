@@ -67,7 +67,7 @@ class User(db.Model):
         """Always False, as anonymous users aren't supported."""
         return False
 
-    def get_id(self):
+    def get_id(self) -> object:
         """Return the email address to satisfy Flask-Login's requirements."""
         """Requires use of Python 3"""
         return str(self.id)

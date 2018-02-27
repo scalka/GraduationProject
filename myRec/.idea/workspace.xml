@@ -13,79 +13,69 @@
     <SUITE FILE_PATH="coverage/myRec$categories.coverage" NAME="categories Coverage Results" MODIFIED="1516963457787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$mf_recommender.coverage" NAME="mf_recommender Coverage Results" MODIFIED="1515331510050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$pop_recommender.coverage" NAME="pop_recommender Coverage Results" MODIFIED="1512234861378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_mod" />
-    <SUITE FILE_PATH="coverage/myRec$run.coverage" NAME="run Coverage Results" MODIFIED="1519649614440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/myRec$run.coverage" NAME="run Coverage Results" MODIFIED="1519727140181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/myRec$generate_model.coverage" NAME="generate_model Coverage Results" MODIFIED="1515331764741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp/matrix_factorisation" />
     <SUITE FILE_PATH="coverage/myRec$contentbased_recommender.coverage" NAME="contentbased_recommender Coverage Results" MODIFIED="1518434504251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
     <SUITE FILE_PATH="coverage/myRec$controllers.coverage" NAME="controllers Coverage Results" MODIFIED="1518434963074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/recommender_comp" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="database.db" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="database.db" type="e3449647:DbNodeDescriptor" />
+        <item name="main" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/recommender_comp/controllers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="83" column="62" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="62" />
+            <state relative-caret-position="272">
+              <caret line="16" column="78" lean-forward="true" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
               <folding>
                 <element signature="e#28#47#0" expanded="true" />
-                <marker date="1519649837926" expanded="true" signature="1009:1052" ph="select usern... user" />
-                <marker date="1519649837926" expanded="true" signature="1105:1160" ph="select recip... ratings" />
-                <marker date="1519649837926" expanded="true" signature="1223:1317" ph="SELECT * fro... recipe" />
-                <marker date="1519649837926" expanded="true" signature="4104:4196" ph="SELECT * fro... recipe" />
-                <marker date="1519649837926" expanded="true" signature="4234:4328" ph="SELECT * fro... recipe" />
-                <marker date="1519649837926" expanded="true" signature="5589:5629" ph="select * fro... recipe" />
-                <marker date="1519649837926" expanded="true" signature="5703:5756" ph="select count... ratings" />
-                <marker date="1519649837926" expanded="true" signature="5841:5890" ph="SELECT recip... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="5841:5923" ph="SELECT recip... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="5841:5937" ph="SELECT recip... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="5887:5890" ph="SELECT recip... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="6371:6424" ph="select count... ratings" />
-                <marker date="1519649837926" expanded="true" signature="6516:6605" ph="select * fro... ratings" />
-                <marker date="1519649837926" expanded="true" signature="6698:6766" ph="insert into ratings... " />
-                <marker date="1519649837926" expanded="true" signature="6860:6886" ph="update ratin... " />
-                <marker date="1519649837926" expanded="true" signature="6860:6970" ph="update ratin... " />
-                <marker date="1519649837926" expanded="true" signature="7006:7074" ph="insert into ratings... " />
-                <marker date="1519649837926" expanded="true" signature="7748:7788" ph="select * fro... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="7748:7789" ph="select * fro... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="7748:7820" ph="select * fro... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="7748:7821" ph="select * fro... bookmarks" />
-                <marker date="1519649837926" expanded="true" signature="7951:8019" ph="insert into bookmarks... " />
-                <marker date="1519649837926" expanded="true" signature="8076:8098" ph="delete from " />
-                <marker date="1519649837926" expanded="true" signature="8076:8147" ph="delete from " />
+                <marker date="1519727627540" expanded="true" signature="1001:1044" ph="select usern... user" />
+                <marker date="1519727627540" expanded="true" signature="1097:1152" ph="select recip... ratings" />
+                <marker date="1519727627540" expanded="true" signature="1215:1309" ph="SELECT * fro... recipe" />
+                <marker date="1519727627540" expanded="true" signature="1257:1307" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="4044:4136" ph="SELECT * fro... recipe" />
+                <marker date="1519727627540" expanded="true" signature="4086:4134" ph="select recip... ratings" />
+                <marker date="1519727627540" expanded="true" signature="4196:4290" ph="SELECT * fro... recipe" />
+                <marker date="1519727627540" expanded="true" signature="4238:4288" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="5550:5590" ph="select * fro... recipe" />
+                <marker date="1519727627540" expanded="true" signature="5664:5717" ph="select count... ratings" />
+                <marker date="1519727627540" expanded="true" signature="5802:5851" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="5802:5884" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="5802:5898" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="5848:5851" ph="SELECT recip... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="6354:6407" ph="select count... ratings" />
+                <marker date="1519727627540" expanded="true" signature="6499:6589" ph="select * fro... ratings" />
+                <marker date="1519727627540" expanded="true" signature="6684:6752" ph="insert into ratings... " />
+                <marker date="1519727627540" expanded="true" signature="6850:6875" ph="update ratin... " />
+                <marker date="1519727627540" expanded="true" signature="6850:6961" ph="update ratin... " />
+                <marker date="1519727627540" expanded="true" signature="6999:7067" ph="insert into ratings... " />
+                <marker date="1519727627540" expanded="true" signature="7756:7796" ph="select * fro... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="7756:7797" ph="select * fro... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="7756:7829" ph="select * fro... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="7756:7830" ph="select * fro... bookmarks" />
+                <marker date="1519727627540" expanded="true" signature="7971:8039" ph="insert into bookmarks... " />
+                <marker date="1519727627540" expanded="true" signature="8125:8147" ph="delete from " />
+                <marker date="1519727627540" expanded="true" signature="8125:8197" ph="delete from " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/auth_comp/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentbased_recommender.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
-              <folding>
-                <marker date="1519649304288" expanded="true" signature="644:664" ph="select * fro... recipe" />
-                <marker date="1519649304288" expanded="true" signature="5635:5679" ph="select title... recipe" />
-                <marker date="1519649304288" expanded="true" signature="6089:6133" ph="select title... recipe" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="results.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -185,8 +175,9 @@
         <option value="$PROJECT_DIR$/app/templates/recipe_detail.html" />
         <option value="$PROJECT_DIR$/app/templates/recom/cookbook.html" />
         <option value="$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py" />
-        <option value="$PROJECT_DIR$/app/recommender_comp/controllers.py" />
         <option value="$PROJECT_DIR$/app/templates/recom/results.html" />
+        <option value="C:/Program Files/Python36/Lib/symtable.py" />
+        <option value="$PROJECT_DIR$/app/recommender_comp/controllers.py" />
       </list>
     </option>
   </component>
@@ -201,6 +192,22 @@
     <option name="y" value="352" />
     <option name="width" value="1918" />
     <option name="height" value="1038" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -276,10 +283,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python/recipesRecommenderLynda" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database.db" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="reviewForm&#9;null&#9;null&#10;sqlite:///&#9;null&#9;null&#10;signin&#9;null&#9;null" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -453,13 +461,13 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26435536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12953092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13166311" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -481,41 +489,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/itsdangerous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="231" column="6" lean-forward="false" selection-start-line="231" selection-start-column="6" selection-end-line="231" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/numpy/lib/tests/test_function_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="1137" column="8" lean-forward="false" selection-start-line="1137" selection-start-column="8" selection-end-line="1137" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/flask/templating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/flask_sqlalchemy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="793" column="0" lean-forward="false" selection-start-line="793" selection-start-column="0" selection-end-line="793" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/recommender_comp/datasets/movies.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/datasets/recipes.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -714,7 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,7 +694,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="45" column="10" lean-forward="false" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -754,7 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -770,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,15 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-137">
           <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/auth_comp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,7 +751,7 @@
         <state relative-caret-position="200">
           <caret line="44" column="10" lean-forward="false" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="10" />
           <folding>
-            <element signature="e#27#36#0" expanded="true" />
+            <element signature="e#27#36#0" expanded="false" />
             <marker date="1519390154375" expanded="true" signature="992:1012" ph="select * fro... recipe" />
           </folding>
         </state>
@@ -803,7 +759,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/contentbased_recommender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="1496">
           <caret line="101" column="4" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
           <folding>
             <marker date="1519649304288" expanded="true" signature="644:664" ph="select * fro... recipe" />
@@ -817,7 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -825,49 +780,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="235" column="16" lean-forward="false" selection-start-line="235" selection-start-column="1" selection-end-line="235" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/7495340e-b747-457d-864c-dde52c83d966/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/symtable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/scipy/cluster/hierarchy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="801" column="30" lean-forward="false" selection-start-line="801" selection-start-column="24" selection-end-line="801" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dc842705-7678-4173-9fbe-4ffbaed54ed0/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/envs/myRecEnv/Lib/site-packages/flask_login/mixins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="74" column="30" lean-forward="false" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/auth_comp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/recommender_comp/controllers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="83" column="62" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="62" />
+        <state relative-caret-position="272">
+          <caret line="16" column="78" lean-forward="true" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
           <folding>
             <element signature="e#28#47#0" expanded="true" />
-            <marker date="1519649837926" expanded="true" signature="1009:1052" ph="select usern... user" />
-            <marker date="1519649837926" expanded="true" signature="1105:1160" ph="select recip... ratings" />
-            <marker date="1519649837926" expanded="true" signature="1223:1317" ph="SELECT * fro... recipe" />
-            <marker date="1519649837926" expanded="true" signature="4104:4196" ph="SELECT * fro... recipe" />
-            <marker date="1519649837926" expanded="true" signature="4234:4328" ph="SELECT * fro... recipe" />
-            <marker date="1519649837926" expanded="true" signature="5589:5629" ph="select * fro... recipe" />
-            <marker date="1519649837926" expanded="true" signature="5703:5756" ph="select count... ratings" />
-            <marker date="1519649837926" expanded="true" signature="5841:5890" ph="SELECT recip... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="5841:5923" ph="SELECT recip... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="5841:5937" ph="SELECT recip... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="5887:5890" ph="SELECT recip... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="6371:6424" ph="select count... ratings" />
-            <marker date="1519649837926" expanded="true" signature="6516:6605" ph="select * fro... ratings" />
-            <marker date="1519649837926" expanded="true" signature="6698:6766" ph="insert into ratings... " />
-            <marker date="1519649837926" expanded="true" signature="6860:6886" ph="update ratin... " />
-            <marker date="1519649837926" expanded="true" signature="6860:6970" ph="update ratin... " />
-            <marker date="1519649837926" expanded="true" signature="7006:7074" ph="insert into ratings... " />
-            <marker date="1519649837926" expanded="true" signature="7748:7788" ph="select * fro... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="7748:7789" ph="select * fro... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="7748:7820" ph="select * fro... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="7748:7821" ph="select * fro... bookmarks" />
-            <marker date="1519649837926" expanded="true" signature="7951:8019" ph="insert into bookmarks... " />
-            <marker date="1519649837926" expanded="true" signature="8076:8098" ph="delete from " />
-            <marker date="1519649837926" expanded="true" signature="8076:8147" ph="delete from " />
+            <marker date="1519727627540" expanded="true" signature="1001:1044" ph="select usern... user" />
+            <marker date="1519727627540" expanded="true" signature="1097:1152" ph="select recip... ratings" />
+            <marker date="1519727627540" expanded="true" signature="1215:1309" ph="SELECT * fro... recipe" />
+            <marker date="1519727627540" expanded="true" signature="1257:1307" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="4044:4136" ph="SELECT * fro... recipe" />
+            <marker date="1519727627540" expanded="true" signature="4086:4134" ph="select recip... ratings" />
+            <marker date="1519727627540" expanded="true" signature="4196:4290" ph="SELECT * fro... recipe" />
+            <marker date="1519727627540" expanded="true" signature="4238:4288" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="5550:5590" ph="select * fro... recipe" />
+            <marker date="1519727627540" expanded="true" signature="5664:5717" ph="select count... ratings" />
+            <marker date="1519727627540" expanded="true" signature="5802:5851" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="5802:5884" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="5802:5898" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="5848:5851" ph="SELECT recip... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="6354:6407" ph="select count... ratings" />
+            <marker date="1519727627540" expanded="true" signature="6499:6589" ph="select * fro... ratings" />
+            <marker date="1519727627540" expanded="true" signature="6684:6752" ph="insert into ratings... " />
+            <marker date="1519727627540" expanded="true" signature="6850:6875" ph="update ratin... " />
+            <marker date="1519727627540" expanded="true" signature="6850:6961" ph="update ratin... " />
+            <marker date="1519727627540" expanded="true" signature="6999:7067" ph="insert into ratings... " />
+            <marker date="1519727627540" expanded="true" signature="7756:7796" ph="select * fro... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="7756:7797" ph="select * fro... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="7756:7829" ph="select * fro... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="7756:7830" ph="select * fro... bookmarks" />
+            <marker date="1519727627540" expanded="true" signature="7971:8039" ph="insert into bookmarks... " />
+            <marker date="1519727627540" expanded="true" signature="8125:8147" ph="delete from " />
+            <marker date="1519727627540" expanded="true" signature="8125:8197" ph="delete from " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/recom/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
