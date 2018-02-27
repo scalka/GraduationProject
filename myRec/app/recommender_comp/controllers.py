@@ -16,7 +16,7 @@ import datetime
 
 recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
 
-
+# Home page
 @recommender_mod.route('/')
 @login_required
 def index():
@@ -29,9 +29,9 @@ def index():
                       (user_id,))  # bookmarked recipes by a user
 
     """ The result of the query is being represented as a Python list of Python tuples [('Philip',)]
-    The tuples contained in the list represent the rows returned by your query.
+    The tuples contained in the list represent the rows returned by the query.
     Each value contained in a tuple represents the corresponding field, 
-    of that specific row, in the order you selected it"""
+    of that specific row """
     name_tuple = n.fetchall()  # get user name
     name = name_tuple[0][0]
     # get recently rated recipes to use in content based recommender
@@ -89,6 +89,7 @@ def index():
 
 @recommender_mod.route('/cookbook')
 @login_required
+# Cookbook page
 def cookbook():
     user_id = current_user.get_id()
     conn = engine.connect()
@@ -128,7 +129,7 @@ def cookbook():
 
 @recommender_mod.route('/<recipe_id>', methods=['POST', 'GET'])
 @login_required
-# Detail page
+# Recipe detail page
 def recipe_details(recipe_id):
     user_id = current_user.get_id()
     conn = engine.connect()
@@ -177,6 +178,7 @@ def recipe_details(recipe_id):
 
 @recommender_mod.route('/<recipe_id>/m', methods=['POST', 'GET'])
 @login_required
+# Saving bookmark to database
 def bookmark(recipe_id):
     conn = engine.connect()
 
@@ -193,3 +195,15 @@ def bookmark(recipe_id):
         conn.execute('delete from bookmarks where user_id == ' + user_id + ' and recipe_id == ' + recipe_id)
     conn.close()
     return redirect(url_for('recommender_comp.recipe_details', recipe_id=recipe_id))
+
+
+@recommender_mod.route('/category/<category>/', defaults={'page': 1})
+@recommender_mod.route('/category/<category>/<int:page>')
+@login_required
+# Category page
+def display_category(category, page):
+    recipes_cat = display_recipes_from_category(category)
+    return render_template('category_page.html',
+                           recipes = recipes_cat,
+                           cat=category,
+                            )

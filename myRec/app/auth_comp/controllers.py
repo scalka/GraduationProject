@@ -1,10 +1,13 @@
+"""
+Authorisation controllers
+"""
+
 # Import flask dependencies
 from flask import Blueprint, request, render_template, \
-                  flash, g, session, redirect, url_for
+                  flash, redirect, url_for
 
 # Import password / encryption helper tools
 from flask_login import login_user, current_user, login_required, logout_user
-from werkzeug import check_password_hash, generate_password_hash
 
 # Import the database object from the main app module
 from app import db
@@ -18,10 +21,10 @@ from app.auth_comp.models import User
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
-@mod_auth.route(',')
 
-# Set the route and accepted methods
+@mod_auth.route(',')
 @mod_auth.route('/login', methods=['GET', 'POST'])
+# Set the route and accepted methods
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST':
@@ -40,11 +43,12 @@ def login():
                 flash('ERROR! Incorrect login credentials.', 'error')
     return render_template('auth/login.html', form=form)
 
+
 @mod_auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = SignupForm()
     if request.method == 'GET':
-        return render_template('auth/register.html', form = form)
+        return render_template('auth/register.html', form=form)
     if request.method == 'POST':
         if form.validate_on_submit():
             if User.query.filter_by(email=form.email.data).first():
@@ -59,10 +63,6 @@ def register():
         else:
             return "Form didn't validate"
 
-@mod_auth.route('/protected')
-@login_required
-def protected():
-    return "protected area"
 
 @mod_auth.route('/logout')
 @login_required

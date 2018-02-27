@@ -1,5 +1,4 @@
 # Import the database object (db) from the main application module
-# We will define this inside /app/__init__.py in the next sections.
 from sqlalchemy import Table, Column, Integer, ForeignKey, REAL
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_method

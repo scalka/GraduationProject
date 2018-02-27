@@ -1,5 +1,7 @@
-# Import Form and RecaptchaField (optional)
-
+"""
+Login and Registration Forms used in Authorization Controllers
+Defined the login forms (WTForms)
+"""
 
 # Import Form elements such as TextField and BooleanField (optional)
 from flask_wtf import Form
@@ -8,8 +10,6 @@ from wtforms import TextField, PasswordField, StringField, SubmitField  # Boolea
 # Import Form validators
 from wtforms.validators import Required, Email, EqualTo, DataRequired
 
-
-# Define the login form (WTForms)
 
 class LoginForm(Form):
     email = StringField('Email Address', [Email(),
