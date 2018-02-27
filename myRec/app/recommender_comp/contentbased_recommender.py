@@ -1,6 +1,10 @@
-import pickle
+"""
+Content Based Recommender
+1. Term Frequency-Inverse Document Frequency (TF-IDF)
+2. Metadata recommendatins
+https://www.datacamp.com/community/tutorials/recommender-systems-python
+"""
 import os
-import numpy as np
 import pandas as pd
 from app import engine
 # Import TfIdfVectorizer from scikit-learn
@@ -9,9 +13,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 # Import linear_kernel
 from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
-from ast import literal_eval
 from functools import reduce
-from string import digits
+
+cur_dir = os.path.dirname(__file__)
 
 
 def fetch_data():
@@ -29,8 +33,8 @@ def fetch_data():
     recipes.columns = recipe_query.keys()
     return recipes
 
-# Term Frequency-Inverse Document Frequency (TF-IDF)
-def contentbased_tfidf_recommend(find_similar_to):
+
+def contentbased_tfidf_recommend(find_similar_to):    # Term Frequency-Inverse Document Frequency (TF-IDF)
     recipes = fetch_data()
     # Replace NaN with an empty string
     recipes['ingredients'] = recipes['ingredients'].fillna('')
@@ -49,13 +53,10 @@ def contentbased_tfidf_recommend(find_similar_to):
 
     return get_contentbased_recommendations(find_similar_to, recipes, indices, cosine_sim)
 
-cur_dir = os.path.dirname(__file__)
+
 def metadata_recommend(find_similar_to):
     recipes = fetch_data()
     # data with description column
-    #description = pd.read_csv('datasets/data_description.csv', sep=",",
-      #                        error_bad_lines=False, encoding="latin-1")
-
     description = pd.read_csv(os.path.join(cur_dir,
                      'datasets',
                      'data_description.csv'), sep=",", error_bad_lines=False, encoding="latin-1")
@@ -66,40 +67,42 @@ def metadata_recommend(find_similar_to):
     features = ['ingredients', 'category', 'description']
     # clean data
     for feature in features:
-        recipes[feature] = recipes[feature].apply(clean_data).str.strip().str.replace('(\W+)', ' ').str.replace('(\d+)', '')
+        recipes[feature] = recipes[feature].apply(clean_data).\
+          str.strip().str.replace('(\W+)', ' ').str.replace('(\d+)', '')
     # Create a new metadata soup
     recipes['soup'] = recipes.apply(create_soup, axis=1)
     # use CountVectorizer() instead of tf-idf
     count = CountVectorizer(stop_words='english')
     count_matrix = count.fit_transform(recipes['soup'])
-    #print(count_matrix.shape)
     cosine_sim2 = cosine_similarity(count_matrix, count_matrix)
     # Reset index of your main DataFrame and construct reverse mapping as before
     indices = pd.Series(recipes.index, index=recipes['title']).drop_duplicates()
 
     return get_contentbased_recommendations(find_similar_to, recipes, indices, cosine_sim2)
 
-# function to create metadata soup - string that contains metadata to be fed to vectorizer
-def create_soup(x):
+
+def create_soup(x):  # function to create metadata soup - string that contains metadata to be fed to vectorizer
     return ' '.join(x['ingredients']) + ' ' + x['category'] + ' ' + ' '.join(x['description'])
 
 
 # function to clean data - convert to lower case, remove unnecessary words
 def clean_data(x):
     # Function to convert all strings to lower case and strip names of spaces
-    repls = ('cups', ''), ('cup', ''), ('tablespoons', ''), ('pounds', ''), ('pound', ''), ('saucepan', ''), ('discard', ''), \
+    repls = ('cups', ''), ('cup', ''), ('tablespoons', ''), ('pounds', ''), ('pound', ''), \
+            ('saucepan', ''), ('discard', ''), \
             ('medium', ''), ('peel', ''), ('combine', ''), ('half', ''), ('place', ''), ('add', ''), ('pound', '')
     if isinstance(x, list):
         return [str.lower(reduce(lambda a, kv: a.replace(*kv), repls, x)) for i in x]
     else:
-        #Check if director exists. If not, return empty string
+        # Check if director exists. If not, return empty string
         if isinstance(x, str):
             return str.lower(reduce(lambda a, kv: a.replace(*kv), repls, x))
         else:
             return ''
 
-# Function that takes in recipe title as input and outputs most similar recipes
+
 def get_contentbased_recommendations(title, recipes, indices, cosine_sim):
+    # Function that takes in recipe title as input and outputs most similar recipes
     # Get the index of the recipe that matches the title
     idx = indices[title]
     # Get the pairwise similarity scores of all recipes with that recipe
@@ -110,11 +113,11 @@ def get_contentbased_recommendations(title, recipes, indices, cosine_sim):
     sim_scores = sim_scores[1:11]
     # Get the recipe indices
     recipe_indices = [i[0] for i in sim_scores]
-    #print(recipes['id'].iloc[recipe_indices].tolist())
     # Return the top 10 most similar recipes
     recipes_df = recipes.iloc[recipe_indices]
 
     return recipes_df
+
 
 def get_last_rated_recipe(rated_recipes, rating):
     i = len(rated_recipes)
@@ -122,13 +125,14 @@ def get_last_rated_recipe(rated_recipes, rating):
     last_rated_t = 0
     # reversed loop from highest to lowest
     for i in reversed(range(i)):
-        if (rated_recipes[i][1] >= rating):
+        if rated_recipes[i][1] >= rating:
             rq = con.execute('select title from recipe where recipe.id == ' + str(rated_recipes[i][0]))
             rec = rq.fetchone()
-            last_rated_t= rec[0]
+            last_rated_t=rec[0]
             break
     con.close()
     return last_rated_t
+
 
 def get_last_bookmarked(bookmarked):
     i = len(bookmarked)
@@ -136,13 +140,12 @@ def get_last_bookmarked(bookmarked):
     last_bookmarked = 0
     # reversed loop from highest to lowest
     for i in reversed(range(i)):
-          #print(str(bookmarked[i][0]))
-          rq = con.execute('select title from recipe where recipe.id == ' + str(bookmarked[i][0]))
-          rec = rq.fetchone()
-          last_bookmarked= rec[0]
-          break
+            rq = con.execute('select title from recipe where recipe.id == ' + str(bookmarked[i][0]))
+            rec = rq.fetchone()
+            last_bookmarked = rec[0]
+            break
     con.close()
     return last_bookmarked
 
-#contentbased_tfidf_recommend('Maple Roast Turkey')
-#metadata_recommend('Maple Roast Turkey')
+# contentbased_tfidf_recommend('Maple Roast Turkey')
+# metadata_recommend('Maple Roast Turkey')

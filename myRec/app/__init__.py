@@ -25,7 +25,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "auth.signin"
 
-from app.auth_comp.models import User
+from app.authorisation_comp.models import User
 
 
 @login_manager.user_loader
@@ -47,17 +47,14 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (auth_comp)
 from app.controllers import views
-from app.auth_comp.controllers import mod_auth as auth_module
+from app.authorisation_comp.controllers import mod_auth as auth_module
 from app.recommender_comp.controllers import recommender_mod as rcmdr
 
 # Register blueprint(s)
 app.register_blueprint(views)
 app.register_blueprint(auth_module)
 app.register_blueprint(rcmdr)
-# app.register_blueprint(xyz_module)
-# ..
 
 # Build the database:
 # This will create the database file using SQLAlchemy
 db.create_all()
-

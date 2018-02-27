@@ -1,15 +1,18 @@
-# Import the database object (db) from the main application module
-from sqlalchemy import Table, Column, Integer, ForeignKey, REAL
+"""
+Database models defined with SQLAlchemy(common database abstraction layer and object relational mapper)
+All the classes represent the tables in database
+"""
+from sqlalchemy import Column, Integer, ForeignKey, REAL
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_method
 from sqlalchemy.orm import relationship
-
+# Import the database object (db) from the main application module
 from app import db
 
 Base = declarative_base()
 
-#http://flask-appbuilder.readthedocs.io/en/latest/relations.html
-#http://docs.sqlalchemy.org/en/rel_0_9/orm/basic_relationships.html#association-object
+# http://flask-appbuilder.readthedocs.io/en/latest/relations.html
+# http://docs.sqlalchemy.org/en/rel_0_9/orm/basic_relationships.html#association-object
 
 class Rating(db.Model):
     __tablename__ = 'ratings'
@@ -21,6 +24,7 @@ class Rating(db.Model):
     recipe = relationship("Recipe")
     rating = db.Column(REAL)
 
+
 class Bookmark(db.Model):
     __tablename__ = 'bookmarks'
 
@@ -30,6 +34,7 @@ class Bookmark(db.Model):
     recipe_id = db.Column(Integer, ForeignKey('recipe.id'))
     recipe = relationship("Recipe")
     date = db.Column(db.Text)
+
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -84,7 +89,7 @@ class Recipe(db.Model):
     cook_time = db.Column(Integer)
     ingredients = db.Column(db.String)
     instructions = db.Column(db.String)
-    photo_url =  db.Column(db.String)
+    photo_url = db.Column(db.String)
     prep_time_minutes = db.Column(Integer)
     total_time_minutes = db.Column(Integer)
     rating_stars = db.Column(REAL)
@@ -95,7 +100,7 @@ class Recipe(db.Model):
     def __init__(self, title, cook_time, ingredients, instructions, photo_url, url, prep_time_minutes,
                  total_time_minutes, rating_stars, review_count, category, calories):
 
-        self.title - title
+        self.title = title
         self.category = category
         self.cook_time = cook_time
         self.ingredients = ingredients
@@ -107,4 +112,3 @@ class Recipe(db.Model):
         self.review_count = review_count
         self.calories = calories
         self.url = url
-

@@ -13,10 +13,10 @@ from flask_login import login_user, current_user, login_required, logout_user
 from app import db
 
 # Import module forms
-from app.auth_comp.forms import LoginForm, SignupForm
+from app.authorisation_comp.forms import LoginForm, SignupForm
 
 # Import module models (i.e. User)
-from app.auth_comp.models import User
+from app.authorisation_comp.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
