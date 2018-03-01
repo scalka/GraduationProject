@@ -7,13 +7,15 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
+# Import Cache
+from flask import Flask
+from flask.ext.cache import Cache
 from config import SQLALCHEMY_DATABASE_URI
 
 app = Flask(__name__)
 # Configurations
 app.config.from_object('config')
-
+cache = Cache(app,config={'CACHE_TYPE': 'simple'})
 
 # Define the database object which is imported
 # by modules and controllers

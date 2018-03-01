@@ -4,7 +4,7 @@ from flask import Blueprint, request, render_template, \
                   redirect, url_for
 # Import the database object from the main app module
 from flask_login import login_required, current_user
-from app import engine
+from app import engine, cache
 from app.recommender_comp.categories import find_categories, display_recipes_from_category
 from app.recommender_comp.contentbased_recommender import contentbased_tfidf_recommend, metadata_recommend, \
   get_last_rated_recipe, get_last_bookmarked
@@ -15,10 +15,11 @@ import app.recommender_comp.pop_recommender
 import datetime
 
 recommender_mod = Blueprint('recommender_comp', __name__, url_prefix='/recom')
-
+name = "n"
 # Home page
 @recommender_mod.route('/')
 @login_required
+@cache.cached(timeout=50)
 def index():
     user_id = current_user.get_id()
     assert isinstance(engine, object)
@@ -33,6 +34,7 @@ def index():
     Each value contained in a tuple represents the corresponding field, 
     of that specific row """
     name_tuple = n.fetchall()  # get user name
+    global name
     name = name_tuple[0][0]
     # get recently rated recipes to use in content based recommender
     rated_recipes = rr.fetchall()
@@ -86,7 +88,7 @@ def index():
                            no_bookmarked_msg=no_bookmarked_msg
                            )
 
-
+@cache.cached(timeout=50)
 @recommender_mod.route('/cookbook')
 @login_required
 # Cookbook page
@@ -122,11 +124,12 @@ def cookbook():
     return render_template('recom/cookbook.html',
                            rated_recipes=rated_recipes_df,
                            bookmarked_recipes=bookmarked_df,
+                           name=name,
                            no_bookmarks_msg=no_bookmarks_msg,
                            no_rated_msg=no_rated_msg
                            )
 
-
+@cache.cached(timeout=50)
 @recommender_mod.route('/<recipe_id>', methods=['POST', 'GET'])
 @login_required
 # Recipe detail page
@@ -172,10 +175,11 @@ def recipe_details(recipe_id):
                            ratings_num=ratings_num_tuple[0][0],
                            prep_time=prep_time,
                            total_time=total_time,
-                           show_bookmark=show_bookmark
+                           show_bookmark=show_bookmark,
+                           name=name
                            )
 
-
+@cache.cached(timeout=50)
 @recommender_mod.route('/<recipe_id>/m', methods=['POST', 'GET'])
 @login_required
 # Saving bookmark to database
@@ -196,7 +200,7 @@ def bookmark(recipe_id):
     conn.close()
     return redirect(url_for('recommender_comp.recipe_details', recipe_id=recipe_id))
 
-
+@cache.cached(timeout=50)
 @recommender_mod.route('/category/<category>/', defaults={'page': 1})
 @recommender_mod.route('/category/<category>/<int:page>')
 @login_required
@@ -206,4 +210,5 @@ def display_category(category, page):
     return render_template('category_page.html',
                            recipes = recipes_cat,
                            cat=category,
+                           name=name
                             )

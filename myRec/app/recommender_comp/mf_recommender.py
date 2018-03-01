@@ -7,7 +7,6 @@ import pickle
 import pandas as pd
 from app import engine
 
-
 cur_dir = os.path.dirname(__file__)
 U = pickle.load(open(os.path.join(cur_dir,
                                   'pkl_objects',
@@ -18,7 +17,6 @@ R = pickle.load(open(os.path.join(cur_dir,
 predicted_ratings = pickle.load(open(os.path.join(cur_dir,
                                     'pkl_objects',
                                     'predicted_ratings_recipes2.dat'), 'rb'))
-
 
 def mf_recommend(user_id):
     #http://shichaoji.com/2016/10/10/database-python-connection-basic/
