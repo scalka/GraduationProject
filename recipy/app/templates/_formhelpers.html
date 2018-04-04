@@ -1,0 +1,11 @@
+{% macro render_field(field, placeholder=None) %}
+  {% if field.errors %}
+
+      {% for error in field.errors %}
+        {{ error }}
+      {% endfor %}
+
+  {% endif %}
+      {% set css_class = 'form-control ' + kwargs.pop('class', '') %}
+      {{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+{% endmacro %}

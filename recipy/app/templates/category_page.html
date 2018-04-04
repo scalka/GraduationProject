@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="main_paige content">
+        <div class="container">
+            <!--Recipes in category-->
+            <h3>{{ cat }}:</h3>
+            <div class="row scrollbar">
+                {% for key,value in recipes.iterrows() %}
+                    <div class="col-xs-4">
+                        <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                          <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                          </div>
+                            <div class="caption">
+                                <p>{{ value['title'] }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+             </div>
+        </div>
+    </div>
+{% endblock %}

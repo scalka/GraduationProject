@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="main_paige content">
+
+    <div class="container cat_cont">
+        <!--Categories-->
+        <h3>Categories:  </h3>
+        <div class="row scrollmenu scrollbar">
+            {% for cat in categories %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.display_category', category=cat) }}">
+                        <div class="cat">
+                            <p>{{ cat }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+    </div>
+    <div class="container recipe_cont">
+        <!--Matrix factorisation-->
+        <h3>Users like you also liked: </h3>
+        {% if (no_mf_msg) %}
+        <p>We are collecting data to generate personalised recipes for you based on your likes</p>
+        {% else %}
+        <div class="row scrollbar">
+            {% for key,value in recommendations.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+        {% endif %}
+
+        <!-- Content based -->
+
+        {% if (no_mf_msg) %}
+        <h3>Because you did not like any recipe: </h3>
+        <p>If you rate recipes you will be recommended similar recipes</p>
+        {% else %}
+        <h3>Because you liked {{ last_rated_title }}: </h3>
+        <div class="row scrollbar">
+            {% for key,value in recommender_tfidf_recipes.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+        {% endif %}
+        <!-- Content based with metadata-->
+        {% if (no_bookmarked_msg) %}
+        <h3>Because you did not bookmark any recipe: </h3>
+        <p>If you bookmark recipes you will be recommended similar recipes</p>
+        {% else %}
+        <h3>Because you bookmarked {{ last_bookmarked }}: </h3>
+        <div class="row scrollbar">
+            {% for key,value in metadata_recommend_recipes.iterrows() %}
+                <div class="col-xs-4">
+                    <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                      <div class=" recipe_item" style="background-image: url('{{ value['photo_url'] }}');">
+                      </div>
+                        <div class="caption">
+                            <p>{{ value['title'] }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+         </div>
+        {% endif %}
+        <!--Popular-->
+        <h3>Popular recipes: </h3>
+        <div class="row scrollmenu scrollbar">
+            {% for key,value in popular_recipes.iterrows() %}
+            <div class="col-xs-4">
+                <a href="{{ url_for('recommender_comp.recipe_details', recipe_id=value['id']) }}">
+                    <div class="recipe_item" style="background-image: url('{{ value.photo_url }}');">
+                    </div>
+                    <div class="caption">
+                      <p>{{ value.title }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+         </div>
+    </div>
+
+    </div>
+{% endblock %}
